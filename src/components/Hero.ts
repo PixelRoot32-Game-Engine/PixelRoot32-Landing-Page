@@ -17,7 +17,7 @@ export function Hero(): string {
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
         <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
       </span>
-      ${i18n.t('hero.version')}
+      <span id="hero-version">${i18n.t('hero.version')}</span>
     </div>
     
     <h1 class="text-5xl lg:text-7xl font-black mb-6 tracking-tight leading-tight">

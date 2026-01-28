@@ -88,7 +88,8 @@ export const i18n = new I18nStore({
     'nav.github': 'GitHub',
     
     // Hero
-    'hero.version': 'v0.1.0-alpha available',
+    'hero.version': 'v0.1.0-alpha available', // This will be replaced dynamically
+    'hero.version.available': 'available',
     'hero.title': 'High-Performance 2D Games for ESP32 & PC.',
     'hero.subtitle': 'A modular, C++17 game engine with a scene-based architecture. Build once, simulate on PC, and deploy to embedded hardware with zero friction.',
     'hero.cta.start': 'START BUILDING',
@@ -180,7 +181,8 @@ export const i18n = new I18nStore({
     'nav.github': 'GitHub',
     
     // Hero
-    'hero.version': 'v0.1.0-alpha disponible',
+    'hero.version': 'v0.1.0-alpha disponible', // This will be replaced dynamically
+    'hero.version.available': 'disponible',
     'hero.title': 'Juegos 2D de Alto Rendimiento para ESP32 & PC.',
     'hero.subtitle': 'Un motor de juegos modular en C++17 con arquitectura basada en escenas. Construye una vez, simula en PC y despliega en hardware embebido sin fricción.',
     'hero.cta.start': 'EMPEZAR A CONSTRUIR',
