@@ -3,7 +3,9 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [tailwindcss()],
-  base: process.env.NODE_ENV === 'production' ? '/PixelRoot32-Landing-Page/' : '/',
+  // Use root path for custom domain (pixelroot32.org)
+  // If deploying to GitHub Pages subdirectory, change to '/repository-name/'
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
