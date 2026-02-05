@@ -20,7 +20,7 @@ npm run preview
 
 ## 📁 Project Structure
 
-```
+```text
 ├── .github/
 │   └── workflows/
 │       ├── deploy.yml          # GitHub Pages deployment
