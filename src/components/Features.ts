@@ -3,6 +3,7 @@
  * Technical deep-dive section with feature grid
  */
 import { i18n } from '../i18n';
+import { Card } from 'pixelroot32-components-landing-page';
 
 export function Features(): string {
   return `<section id="features" class="py-24 bg-surface/30 border-y border-border-ui">
@@ -14,58 +15,52 @@ export function Features(): string {
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
       <!-- Feature 1: Scene System -->
-      <div class="p-8 bg-surface border border-border-ui hover:border-primary transition-all group">
-        <div class="w-12 h-12 bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-          <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3">${i18n.t('features.scene_system.title')}</h3>
-        <p class="text-text-muted text-sm leading-relaxed">${i18n.t('features.scene_system.description')}</p>
-      </div>
+      ${Card({
+        title: i18n.t('features.scene_system.title'),
+        description: i18n.t('features.scene_system.description'),
+        variant: 'primary',
+        icon: '<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>'
+      })}
 
       <!-- Feature 2: Sprite Engine -->
-      <div class="p-8 bg-surface border border-border-ui hover:border-secondary transition-all group">
-        <div class="w-12 h-12 bg-secondary/10 flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors">
-          <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3zM9 12h6M12 9v6"></path></svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3">${i18n.t('features.sprite_engine.title')}</h3>
-        <p class="text-text-muted text-sm leading-relaxed">${i18n.t('features.sprite_engine.description')}</p>
-      </div>
+      ${Card({
+        title: i18n.t('features.sprite_engine.title'),
+        description: i18n.t('features.sprite_engine.description'),
+        variant: 'secondary',
+        icon: '<svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3zM9 12h6M12 9v6"></path></svg>'
+      })}
 
       <!-- Feature 3: Physics System -->
-      <div class="p-8 bg-surface border border-border-ui hover:border-retro transition-all group">
-        <div class="w-12 h-12 bg-retro/10 flex items-center justify-center mb-6 group-hover:bg-retro/20 transition-colors">
-          <svg class="w-6 h-6 text-retro" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3">${i18n.t('features.physics.title')}</h3>
-        <p class="text-text-muted text-sm leading-relaxed">${i18n.t('features.physics.description')}</p>
-      </div>
+      ${Card({
+        title: i18n.t('features.physics.title'),
+        description: i18n.t('features.physics.description'),
+        variant: 'retro',
+        icon: '<svg class="w-6 h-6 text-retro" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>'
+      })}
 
       <!-- Feature 4: NES Audio -->
-      <div class="p-8 bg-surface border border-border-ui hover:border-primary transition-all group">
-        <div class="w-12 h-12 bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-          <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3">${i18n.t('features.nes_audio.title')}</h3>
-        <p class="text-text-muted text-sm leading-relaxed">${i18n.t('features.nes_audio.description')}</p>
-      </div>
+      ${Card({
+        title: i18n.t('features.nes_audio.title'),
+        description: i18n.t('features.nes_audio.description'),
+        variant: 'primary',
+        icon: '<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>'
+      })}
 
       <!-- Feature 5: UI Toolkit -->
-      <div class="p-8 bg-surface border border-border-ui hover:border-secondary transition-all group">
-        <div class="w-12 h-12 bg-secondary/10 flex items-center justify-center mb-6 group-hover:bg-secondary/20 transition-colors">
-          <svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3">${i18n.t('features.ui_toolkit.title')}</h3>
-        <p class="text-text-muted text-sm leading-relaxed">${i18n.t('features.ui_toolkit.description')}</p>
-      </div>
+      ${Card({
+        title: i18n.t('features.ui_toolkit.title'),
+        description: i18n.t('features.ui_toolkit.description'),
+        variant: 'secondary',
+        icon: '<svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>'
+      })}
 
       <!-- Feature 6: Hardware Optimization -->
-      <div class="p-8 bg-surface border border-border-ui hover:border-retro transition-all group">
-        <div class="w-12 h-12 bg-retro/10 flex items-center justify-center mb-6 group-hover:bg-retro/20 transition-colors">
-          <svg class="w-6 h-6 text-retro" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
-        </div>
-        <h3 class="text-xl font-bold mb-3">${i18n.t('features.optimization.title')}</h3>
-        <p class="text-text-muted text-sm leading-relaxed">${i18n.t('features.optimization.description')}</p>
-      </div>
+      ${Card({
+        title: i18n.t('features.optimization.title'),
+        description: i18n.t('features.optimization.description'),
+        variant: 'retro',
+        icon: '<svg class="w-6 h-6 text-retro" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>'
+      })}
     </div>
   </div>
 </section>`;

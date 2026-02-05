@@ -2,7 +2,7 @@
  * Components Index
  * Central export point for all components
  */
-export { Navigation } from './Navigation';
+export { Navigation, initNavigation } from './Navigation';
 export { Hero } from './Hero';
 export { Features } from './Features';
 export { CodeBlock } from './CodeBlock';

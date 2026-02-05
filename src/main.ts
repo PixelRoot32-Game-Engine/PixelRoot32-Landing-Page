@@ -1,6 +1,6 @@
 import './style.css'
 import './utils/analytics'
-import { Navigation, Hero, Features, CodeBlock, Showcase, BuiltWith, CTA, Tools, Footer, initToolsImageModal } from './components';
+import { Navigation, initNavigation, Hero, Features, CodeBlock, Showcase, BuiltWith, CTA, Tools, Footer, initToolsImageModal } from './components';
 import { initLanguageSwitcher } from './components/LanguageSwitcher';
 import { initVersionDisplay } from './utils/version';
 import { i18n } from './i18n';
@@ -22,6 +22,9 @@ function renderApp(): void {
   
   // Initialize language switcher functionality
   initLanguageSwitcher();
+  
+  // Initialize navigation mobile menu
+  initNavigation();
   
   // Initialize tools image modal
   initToolsImageModal();
