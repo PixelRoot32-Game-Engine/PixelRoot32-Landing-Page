@@ -8,8 +8,12 @@ export function Footer(): string {
   return `<footer class="py-12 border-t border-border-ui bg-surface/50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-      <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+      <a href="/" class="flex items-center gap-3 hover:opacity-80 transition-opacity group">
         <img src="/logo.png" alt="PixelRoot32" class="h-10 w-auto opacity-70" />
+        <div class="flex flex-col leading-none">
+          <span class="text-xl font-black tracking-tighter text-white/70 uppercase">PixelRoot32</span>
+          <span class="text-[8px] font-mono font-bold tracking-[0.2em] text-secondary/70 uppercase">Game Engine</span>
+        </div>
       </a>
       
       <div class="flex space-x-8 text-sm font-medium text-text-muted">
