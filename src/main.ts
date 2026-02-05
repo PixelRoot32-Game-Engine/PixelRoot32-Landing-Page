@@ -39,3 +39,6 @@ if (document.readyState === 'loading') {
   renderApp();
 }
 
+// Re-render app when language changes
+window.addEventListener('languageChanged', renderApp);
+
