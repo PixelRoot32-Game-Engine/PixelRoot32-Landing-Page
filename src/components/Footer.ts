@@ -9,7 +9,7 @@ export function Footer(): string {
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row justify-between items-center gap-8">
       <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-        <img src="/pr32_logo_v2.png" alt="PixelRoot32" class="h-10 w-auto opacity-70" />
+        <img src="/logo.png" alt="PixelRoot32" class="h-10 w-auto opacity-70" />
       </a>
       
       <div class="flex space-x-8 text-sm font-medium text-text-muted">

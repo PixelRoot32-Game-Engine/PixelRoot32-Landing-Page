@@ -10,7 +10,7 @@ export function Navigation(): string {
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-20 items-center">
       <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-        <img src="/pr32_logo_v2.png" alt="PixelRoot32" class="h-12 w-auto" />
+        <img src="/logo.png" alt="PixelRoot32" class="h-12 w-auto" />
       </a>
       <div class="hidden md:flex items-center space-x-8">
         <a href="#features" class="text-sm font-medium hover:text-primary transition-colors">${i18n.t('nav.features')}</a>

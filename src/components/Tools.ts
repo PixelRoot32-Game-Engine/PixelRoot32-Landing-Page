@@ -16,7 +16,7 @@ export function Tools(): string {
       <!-- Sprite Compiler -->
       <div class="space-y-6">
         <div class="aspect-video bg-background border-4 border-border-ui shadow-block flex items-center justify-center relative group overflow-hidden cursor-pointer" data-tool-image="sprite-compiler">
-          <img src="/tools/sprite_compiler.PNG" alt="PixelRoot32 Sprite Compiler" class="absolute inset-0 w-full h-full object-cover" style="object-position: top left;" />
+          <img src="/tools/sprite-compiler.webp" alt="PixelRoot32 Sprite Compiler" class="absolute inset-0 w-full h-full object-cover" style="object-position: top left;" />
           <div class="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors"></div>
           <div class="absolute bottom-4 right-4 bg-secondary text-background px-2 py-1 text-[10px] font-bold z-10">
             ${i18n.t('tools.available')}
@@ -36,7 +36,7 @@ export function Tools(): string {
       <!-- Tilemap Editor -->
       <div class="space-y-6">
         <div class="aspect-video bg-background border-4 border-border-ui shadow-block flex items-center justify-center relative overflow-hidden opacity-75 cursor-pointer" data-tool-image="tilemap-editor">
-          <img src="/tools/tilemap_editor.PNG" alt="PixelRoot32 Tilemap Editor" class="absolute inset-0 w-full h-full object-cover grayscale-[0.3]" style="object-position: top left;" />
+          <img src="/tools/tilemap-editor.webp" alt="PixelRoot32 Tilemap Editor" class="absolute inset-0 w-full h-full object-cover grayscale-[0.3]" style="object-position: top left;" />
           <div class="absolute inset-0 bg-background/40"></div>
           <div class="absolute bottom-4 right-4 bg-retro text-background px-2 py-1 text-[10px] font-bold z-10">
             ${i18n.t('tools.coming_soon')}
