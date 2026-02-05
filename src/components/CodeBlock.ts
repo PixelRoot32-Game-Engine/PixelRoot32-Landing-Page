@@ -47,10 +47,10 @@ export function CodeBlock(): string {
           </div>
           <div class="p-6 font-mono text-sm overflow-x-auto leading-relaxed">
             <pre class="text-text-high"><span class="text-retro">#include</span> <span class="text-secondary">&lt;core/Engine.h&gt;</span>
-<span class="text-primary">namespace</span> pr32 = pixelroot32;
+<span class="text-retro">#include</span> <span class="text-secondary">&lt;graphics/DisplayConfig.h&gt;</span>
 
-<span class="text-text-muted">// 1. Configure Hardware & Engine</span>
-<span class="text-primary">pr32::core::Engine</span> engine(display, input, audio);
+<span class="text-primary">pixelroot32::graphics::DisplayConfig</span> display;
+<span class="text-primary">pixelroot32::core::Engine</span> engine(display);
 
 <span class="text-primary">void</span> <span class="text-secondary">setup</span>() {
     engine.<span class="text-secondary">init</span>();
@@ -58,7 +58,6 @@ export function CodeBlock(): string {
 }
 
 <span class="text-primary">void</span> <span class="text-secondary">loop</span>() {
-    <span class="text-text-muted">// 2. Deterministic Run Loop</span>
     engine.<span class="text-secondary">run</span>(); 
 }</pre>
           </div>

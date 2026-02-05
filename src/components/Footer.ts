@@ -14,7 +14,7 @@ export function Footer(): string {
       
       <div class="flex space-x-8 text-sm font-medium text-text-muted">
         <a href="https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine" target="_blank" class="hover:text-primary transition-colors">${i18n.t('footer.social.github')}</a>
-        <a href="https://discord.com/invite/NWRMTKU5" target="_blank" class="hover:text-primary transition-colors">${i18n.t('footer.social.discord')}</a>
+        <a href="https://discord.gg/ytduYfr8" target="_blank" class="hover:text-primary transition-colors">${i18n.t('footer.social.discord')}</a>
         <a href="https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/blob/main/LICENSE" target="_blank" class="hover:text-primary transition-colors">${i18n.t('footer.license')}</a>
       </div>
 

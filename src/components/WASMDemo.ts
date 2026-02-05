@@ -33,9 +33,10 @@ export function WASMDemo(): string {
             class="w-full h-64 bg-background border border-border-ui p-4 font-mono text-sm text-text-high resize-none focus:outline-none focus:border-primary"
             readonly
           >#include &lt;core/Engine.h&gt;
-namespace pr32 = pixelroot32;
+#include &lt;graphics/DisplayConfig.h&gt;
 
-pr32::core::Engine engine(display, input, audio);
+pixelroot32::graphics::DisplayConfig display;
+pixelroot32::core::Engine engine(display);
 
 void setup() {
     engine.init();

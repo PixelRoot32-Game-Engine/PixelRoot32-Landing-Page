@@ -29,7 +29,7 @@ export function Hero(): string {
     </p>
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-primary text-black font-mono font-black text-lg shadow-block hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-block-hover-lg transition-all">
+      <a href="https://docs.pixelroot32.org" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-primary text-black font-mono font-black text-lg shadow-block hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-block-hover-lg transition-all">
         ${i18n.t('hero.cta.start')}
       </a>
       <a href="https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-surface border-2 border-border-ui font-mono font-bold text-lg hover:border-primary transition-all">

@@ -30,7 +30,7 @@ export function Showcase(): string {
             <div class="absolute inset-0 bg-secondary/5 group-hover:bg-transparent transition-colors"></div>
             <div class="text-secondary font-mono text-sm uppercase tracking-[0.2em] font-bold">${i18n.t('showcase.esp32.title')}</div>
             <!-- Placeholder for actual hardware photo -->
-            <div class="absolute bottom-4 right-4 bg-secondary text-background px-2 py-1 text-[10px] font-bold">ST7735 / ILI9341</div>
+            <div class="absolute bottom-4 right-4 bg-secondary text-background px-2 py-1 text-[10px] font-bold">ST7735 / ST7789 / ILI9341</div>
           </div>
           <div class="text-left px-4">
             <h3 class="text-xl font-bold mb-2 italic">${i18n.t('showcase.esp32.subtitle')}</h3>
