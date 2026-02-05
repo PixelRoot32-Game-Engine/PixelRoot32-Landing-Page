@@ -8,14 +8,22 @@ Landing page for PixelRoot32, a modular 2D game engine for ESP32 and PC.
 # Install dependencies
 npm install
 
+# (Optional) Link shared components library for local development
+# Make sure to run 'npm link' in the components directory first
+npm link pixelroot32-components-landing-page
+
 # Start development server
 npm run dev
+```
 
 # Build for production
+
 npm run build
 
 # Preview production build
+
 npm run preview
+
 ```
 
 ## 📁 Project Structure
