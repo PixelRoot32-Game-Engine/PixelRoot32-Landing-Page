@@ -99,24 +99,27 @@ export function Tools(): string {
 /**
  * Initialize image modal functionality for Tools component
  */
-export function initToolsImageModal(): void {
-  // Move modal to body if it's not already there
-  let modal = document.getElementById('tool-image-modal');
-  if (modal && modal.parentElement !== document.body) {
+export function initToolsImageModal(container: HTMLElement = document.body): void {
+  // Search for modal and triggers within the provided container
+  let modal = container.querySelector('#tool-image-modal') as HTMLElement;
+  if (!modal) return;
+
+  // Move modal to body if it's not already there for better positioning
+  if (modal.parentElement !== document.body) {
     document.body.appendChild(modal);
   }
   
-  const modalImg = document.getElementById('tool-image-modal-img') as HTMLImageElement;
-  const modalTitle = document.getElementById('tool-image-modal-title');
-  const modalDescription = document.getElementById('tool-image-modal-description');
-  const modalLink = document.getElementById('tool-image-modal-link') as HTMLAnchorElement;
-  const modalLinkText = document.getElementById('tool-image-modal-link-text');
-  const modalBadge = document.getElementById('tool-image-modal-badge');
-  const modalBadgeText = document.getElementById('tool-image-modal-badge-text');
-  const closeBtn = document.getElementById('tool-image-modal-close');
-  const imageContainers = document.querySelectorAll('[data-tool-image]');
+  const modalImg = modal.querySelector('#tool-image-modal-img') as HTMLImageElement;
+  const modalTitle = modal.querySelector('#tool-image-modal-title');
+  const modalDescription = modal.querySelector('#tool-image-modal-description');
+  const modalLink = modal.querySelector('#tool-image-modal-link') as HTMLAnchorElement;
+  const modalLinkText = modal.querySelector('#tool-image-modal-link-text');
+  const modalBadge = modal.querySelector('#tool-image-modal-badge');
+  const modalBadgeText = modal.querySelector('#tool-image-modal-badge-text');
+  const closeBtn = modal.querySelector('#tool-image-modal-close');
+  const imageContainers = container.querySelectorAll('[data-tool-image]');
 
-  if (!modal || !modalImg || !closeBtn || !modalTitle || !modalDescription || !modalLink || !modalLinkText || !modalBadge || !modalBadgeText) return;
+  if (!modalImg || !closeBtn || !modalTitle || !modalDescription || !modalLink || !modalLinkText || !modalBadge || !modalBadgeText) return;
 
   // Tool data mapping
   const toolData: Record<string, { title: string; description: string; link: string; linkText?: string; badge: string; badgeColor: string }> = {

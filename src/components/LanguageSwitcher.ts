@@ -11,13 +11,13 @@ export function LanguageSwitcher(): string {
 /**
  * Initialize language switcher functionality
  */
-export function initLanguageSwitcher(): void {
-  const container = document.getElementById('language-switcher-container');
-  if (!container) return;
+export function initLanguageSwitcher(container: HTMLElement = document.body): void {
+  const switcherContainer = container.querySelector('#language-switcher-container');
+  if (!switcherContainer) return;
 
   const render = () => {
     const currentLang = i18n.getLanguage();
-    container.innerHTML = `
+    switcherContainer.innerHTML = `
       <div class="flex items-center bg-surface border border-border-ui p-1 rounded-sm">
         <button 
           data-lang="en" 
@@ -34,7 +34,7 @@ export function initLanguageSwitcher(): void {
       </div>
     `;
 
-    container.querySelectorAll('button').forEach(btn => {
+    switcherContainer.querySelectorAll('button').forEach(btn => {
       btn.addEventListener('click', () => {
         const lang = btn.getAttribute('data-lang') as Language;
         i18n.setLanguage(lang);
