@@ -53,8 +53,8 @@ export async function getLatestVersion(): Promise<string> {
  * Initialize version display
  * Updates the version badge in the hero section
  */
-export async function initVersionDisplay(i18n?: { t: (key: string, defaultValue?: string) => string }): Promise<void> {
-  const versionElement = document.getElementById('hero-version');
+export async function initVersionDisplay(i18n?: { t: (key: string, defaultValue?: string) => string }, container: HTMLElement = document.body): Promise<void> {
+  const versionElement = container.querySelector('#hero-version');
   if (!versionElement) return;
 
   try {

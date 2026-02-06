@@ -6,6 +6,17 @@ import { initVersionDisplay } from './utils/version';
 import { i18n } from './i18n';
 
 /**
+ * Helper to create an element from an HTML string safely
+ */
+function appendComponent(container: HTMLElement, html: string): void {
+  const temp = document.createElement('div');
+  temp.innerHTML = html.trim();
+  while (temp.firstChild) {
+    container.appendChild(temp.firstChild);
+  }
+}
+
+/**
  * Main Application Entry Point
  * Renders all components into the #app container
  */
@@ -17,20 +28,35 @@ function renderApp(): void {
     return;
   }
 
+  // Clear container
+  app.innerHTML = '';
+
   // Render all components in order
-  app.innerHTML = Navigation() + Hero() + Features() + CodeBlock() + Showcase() + BuiltWith() + Tools() + CTA() + Footer();
+  const components = [
+    Navigation(), 
+    Hero(), 
+    Features(), 
+    CodeBlock(), 
+    Showcase(), 
+    BuiltWith(), 
+    Tools(), 
+    CTA(), 
+    Footer()
+  ];
+
+  components.forEach(html => appendComponent(app, html));
   
   // Initialize language switcher functionality
-  initLanguageSwitcher();
+  initLanguageSwitcher(app);
   
   // Initialize navigation mobile menu
-  initNavigation();
+  initNavigation(app);
   
   // Initialize tools image modal
-  initToolsImageModal();
+  initToolsImageModal(app);
   
   // Initialize version display from GitHub
-  initVersionDisplay(i18n);
+  initVersionDisplay(i18n, app);
 
   console.log('PixelRoot32 Landing Page Rendered');
 }
