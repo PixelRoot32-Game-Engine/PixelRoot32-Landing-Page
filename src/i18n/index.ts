@@ -91,7 +91,7 @@ export const i18n = new I18nStore({
     'hero.version': 'v0.6.0-dev available',  // This will be replaced dynamically
     'hero.version.available': 'available',
     'hero.title': 'High-Performance 2D Games for ESP32.',
-    'hero.subtitle': 'A modular C++17 engine with scene-based architecture. Build for ESP32 hardware and simulate on PC for rapid logic testing and debugging.',
+    'hero.subtitle': 'A modular C++ engine with scene-based architecture. Build for ESP32 hardware and simulate on PC for rapid logic testing and debugging.',
     'hero.cta.start': 'START BUILDING',
     'hero.cta.view': 'VIEW SOURCE',
     'hero.feature1.title': '01. Modular by Design',
@@ -188,7 +188,7 @@ export const i18n = new I18nStore({
     'hero.version': 'v0.2.0-dev disponible', // This will be replaced dynamically
     'hero.version.available': 'disponible',
     'hero.title': 'Juegos 2D de Alto Rendimiento para ESP32.',
-    'hero.subtitle': 'Un motor modular en C++17 con arquitectura basada en escenas. Desarrolla para hardware ESP32 y simula en PC para testear lógica y depurar rápidamente.',
+    'hero.subtitle': 'Un motor modular en C++ con arquitectura basada en escenas. Desarrolla para hardware ESP32 y simula en PC para testear lógica y depurar rápidamente.',
     'hero.cta.start': 'EMPEZAR A CONSTRUIR',
     'hero.cta.view': 'VER CÓDIGO FUENTE',
     'hero.feature1.title': '01. Diseñado para ser Modular',
