@@ -5,8 +5,8 @@ export function Navigation(): string {
   return SharedNavigation({
     logoUrl: '/logo.png',
     logoAlt: 'PixelRoot32 Logo',
-    title: 'PIXELROOT32',
-    subtitle: 'Game Engine',
+    title: '',
+    subtitle: '',
     links: [
       { label: i18n.t('nav.features'), href: '#features' },
       { label: i18n.t('nav.documentation'), href: 'https://docs.pixelroot32.org' },
