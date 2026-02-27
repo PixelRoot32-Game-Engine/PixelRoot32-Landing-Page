@@ -22,12 +22,12 @@ export function Features(): string {
         icon: '<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>'
       })}
 
-      <!-- Feature 2: Sprite Engine -->
+      <!-- Feature 2: Multi-Core Audio -->
       ${Card({
-        title: i18n.t('features.sprite_engine.title'),
-        description: i18n.t('features.sprite_engine.description'),
+        title: i18n.t('features.multicore_audio.title'),
+        description: i18n.t('features.multicore_audio.description'),
         variant: 'secondary',
-        icon: '<svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3zM9 12h6M12 9v6"></path></svg>'
+        icon: '<svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>'
       })}
 
       <!-- Feature 3: Physics System -->
@@ -38,12 +38,12 @@ export function Features(): string {
         icon: '<svg class="w-6 h-6 text-retro" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>'
       })}
 
-      <!-- Feature 4: NES Audio -->
+      <!-- Feature 4: Sprite & Graphics -->
       ${Card({
-        title: i18n.t('features.nes_audio.title'),
-        description: i18n.t('features.nes_audio.description'),
+        title: i18n.t('features.sprite_graphics.title'),
+        description: i18n.t('features.sprite_graphics.description'),
         variant: 'primary',
-        icon: '<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>'
+        icon: '<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3zM9 12h6M12 9v6"></path></svg>'
       })}
 
       <!-- Feature 5: UI Toolkit -->
