@@ -88,50 +88,50 @@ export const i18n = new I18nStore({
     'nav.github': 'GitHub',
     
     // Hero
-    'hero.version': 'v0.6.0-dev available',  // This will be replaced dynamically
+    'hero.version': 'v1.0.0 available',  // This will be replaced dynamically
     'hero.version.available': 'available',
     'hero.title': 'High-Performance 2D Games for ESP32.',
-    'hero.subtitle': 'A modular C++ engine with scene-based architecture. Build for ESP32 hardware and simulate on PC for rapid logic testing and debugging.',
+    'hero.subtitle': 'A modular c++17 engine with scene-based architecture. Build for ESP32 hardware and simulate on PC for rapid logic testing and debugging.',
     'hero.cta.start': 'START BUILDING',
     'hero.cta.view': 'VIEW SOURCE',
-    'hero.feature1.title': '01. Modular by Design',
-    'hero.feature1.description': 'Swap display drivers, audio backends, or input systems without touching core logic.',
-    'hero.feature2.title': '02. True Cross-Platform',
-    'hero.feature2.description': 'Test logic on PC (SDL2) and flash to ESP32 with zero friction and maximum performance.',
+    'hero.feature1.title': '01. Multi-Core Optimized',
+    'hero.feature1.description': 'Audio scheduler on Core 0, game loop on Core 1. Lock-free SPSC queue with sample-accurate timing ensures 60 FPS gameplay with zero audio jitter.',
+    'hero.feature2.title': '02. Flat Solver Physics',
+    'hero.feature2.description': 'Impulse-based collision with fixed 1/60s timestep. Proper velocity/position separation, CCD for fast objects, and Baumgarte stabilization for stable stacking.',
     'hero.feature3.title': '03. Retro-Engineered',
-    'hero.feature3.description': 'Built-in NES-style synth and deterministic sprite system for the authentic retro feel.',
+    'hero.feature3.description': 'True NES audio (Pulse, Triangle, Noise) running on dedicated core, multi-layer sprites with step-based animation, and fixed-timestep physics for arcade precision.',
     
     // CodeBlock
-    'code.title': 'Godot-inspired, C++ Optimized.',
+    'code.title': 'Godot-inspired, c++17 Optimized.',
     'code.subtitle': 'PixelRoot32 uses a familiar scene-based architecture that makes game logic intuitive, even on memory-constrained devices.',
-    'code.feature1': 'Deterministic game loop control',
-    'code.feature2': 'Namespace-organized modular API',
-    'code.feature3': 'Automatic memory pooling for actors',
+    'code.feature1': 'Fixed 1/60s timestep for deterministic physics',
+    'code.feature2': 'Multi-core audio scheduler (Core 0) + game loop (Core 1)',
+    'code.feature3': 'Platform-agnostic drivers with automatic FPU/Fixed16 selection',
     
     // Features
     'features.title': 'Technical Deep-Dive',
     'features.subtitle': 'A modular toolkit designed for the modern retro developer.',
     'features.scene_system.title': 'Scene System',
-    'features.scene_system.description': 'Godot-inspired hierarchy with Scenes, Actors, and PhysicsActors for intuitive entity management.',
-    'features.sprite_engine.title': 'Sprite Engine',
-    'features.sprite_engine.description': 'Deterministic 1bpp/2bpp/4bpp sprite system with multi-layer support and step-based animations.',
-    'features.physics.title': 'Physics System',
-    'features.physics.description': 'Built-in AABB collision detection and PhysicsActor with gravity, friction, and restitution support.',
-    'features.nes_audio.title': 'NES Audio',
-    'features.nes_audio.description': 'Native 4-channel synthesizer (Pulse, Triangle, Noise) for authentic 8-bit soundscapes.',
+    'features.scene_system.description': 'Godot-inspired hierarchy with Scene stack management, Entity lifecycle control, and specialized Actor types (Static, Kinematic, Rigid) for intuitive game structure.',
+    'features.multicore_audio.title': 'Multi-Core Audio',
+    'features.multicore_audio.description': '4-channel NES synthesizer (Pulse, Triangle, Noise) running on dedicated core with sample-accurate timing, lock-free command queue, and non-linear mixer.',
+    'features.physics.title': 'Flat Solver Physics',
+    'features.physics.description': 'Impulse-based velocity solver with fixed 1/60s timestep, Spatial Grid broadphase, CCD for fast objects, and Baumgarte position correction for stable simulations.',
+    'features.sprite_graphics.title': 'Sprite & Graphics',
+    'features.sprite_graphics.description': '1bpp/2bpp/4bpp sprites with multi-layer support, native bitmap font system (Font5x7), dual palette mode, and viewport culling for optimal performance.',
     'features.ui_toolkit.title': 'UI Toolkit',
-    'features.ui_toolkit.description': 'Smart layouts and interactive components like Buttons, Labels, and Checkboxes for rich interfaces.',
+    'features.ui_toolkit.description': 'Smart layouts (Vertical, Horizontal, Grid, Anchor) with automatic positioning, scroll support, D-pad navigation, and interactive components (Buttons, Labels, Panels).',
     'features.optimization.title': 'Hardware Optimized',
-    'features.optimization.description': 'Leverages DMA, SPI, and IRAM on ESP32 for maximum performance and smooth framerates.',
+    'features.optimization.description': 'DMA pipelining for displays, IRAM-cached rendering, shared static buffers (~100KB saved), and I2C 1MHz overclocking for sustained 60 FPS on ESP32.', 
     
     // Showcase
     'showcase.title': 'One Codebase. Two Worlds.',
     'showcase.pc.title': 'PC Simulation (SDL2)',
     'showcase.pc.subtitle': 'Rapid Prototyping',
-    'showcase.pc.description': 'Debug your game logic, test physics, and iterate on UI layouts directly on your desktop with full hot-reloading support.',
+    'showcase.pc.description': 'Test game logic with sample-accurate audio timing and deterministic physics. Same behavior as ESP32 hardware, zero code changes required.',
     'showcase.esp32.title': 'ESP32 Hardware (SPI)',
     'showcase.esp32.subtitle': 'Hardware Deployment',
-    'showcase.esp32.description': 'Deploy to resource-constrained microcontrollers. PixelRoot32 leverages DMA and SPI to ensure smooth performance on real hardware.',
+    'showcase.esp32.description': 'Multi-core architecture (Core 0: audio, Core 1: game loop) with DMA pipelining and IRAM-cached rendering for sustained 60 FPS on resource-constrained hardware.',
     
     // CTA
     'cta.cta1': 'GET STARTED NOW',
@@ -175,7 +175,7 @@ export const i18n = new I18nStore({
     'tools.sprite_compiler.title': 'Sprite Compiler',
     'tools.sprite_compiler.description': 'Convert PNG sprite sheets into optimized C header files (.h) compatible with PixelRoot32. Supports layered sprites, multiple color depths (1bpp/2bpp/4bpp), and automatic palette detection.',
     'tools.tilemap_editor.title': 'Tilemap Editor',
-    'tools.tilemap_editor.description': 'Create multi-layer tile-based maps and scenes for PixelRoot32. Features integrated workspace, smart tile selection, and export to optimized C++ code for ESP32 hardware.'
+    'tools.tilemap_editor.description': 'Create multi-layer tile-based maps and scenes for PixelRoot32. Features integrated workspace, smart tile selection, and export to optimized c++17 code for ESP32 hardware.'
   },
   es: {
     // Navigation
@@ -188,47 +188,47 @@ export const i18n = new I18nStore({
     'hero.version': 'v0.2.0-dev disponible', // This will be replaced dynamically
     'hero.version.available': 'disponible',
     'hero.title': 'Juegos 2D de Alto Rendimiento para ESP32.',
-    'hero.subtitle': 'Un motor modular en C++ con arquitectura basada en escenas. Desarrolla para hardware ESP32 y simula en PC para testear lógica y depurar rápidamente.',
+    'hero.subtitle': 'Un motor modular en c++17 con arquitectura basada en escenas. Desarrolla para hardware ESP32 y simula en PC para testear lógica y depurar rápidamente.',
     'hero.cta.start': 'EMPEZAR A CONSTRUIR',
     'hero.cta.view': 'VER CÓDIGO FUENTE',
-    'hero.feature1.title': '01. Diseñado para ser Modular',
-    'hero.feature1.description': 'Cambia controladores de pantalla, backends de audio o sistemas de entrada sin tocar la lógica central.',
-    'hero.feature2.title': '02. Verdaderamente Multiplataforma',
-    'hero.feature2.description': 'Prueba la lógica en PC (SDL2) y flashea a ESP32 sin fricción y con máximo rendimiento.',
+    'hero.feature1.title': '01. Optimizado Multi-Núcleo',
+    'hero.feature1.description': 'Planificador de audio en Núcleo 0, bucle de juego en Núcleo 1. Cola SPSC sin bloqueos con timing preciso por muestra garantiza 60 FPS sin jitter de audio.',
+    'hero.feature2.title': '02. Físicas Flat Solver',
+    'hero.feature2.description': 'Colisiones basadas en impulsos con timestep fijo de 1/60s. Separación adecuada de velocidad/posición, CCD para objetos rápidos, y estabilización Baumgarte para apilamiento estable.',
     'hero.feature3.title': '03. Diseñado para Retro',
-    'hero.feature3.description': 'Sintetizador estilo NES y sistema de sprites determinístico para el auténtico feel retro.',
+    'hero.feature3.description': 'Audio NES auténtico (Pulse, Triangle, Noise) ejecutándose en núcleo dedicado, sprites multi-capa con animación por pasos, y físicas de timestep fijo para precisión arcade.',
     
     // CodeBlock
-    'code.title': 'Inspirado en Godot, Optimizado en C++.',
+    'code.title': 'Inspirado en Godot, Optimizado en c++17.',
     'code.subtitle': 'PixelRoot32 usa una arquitectura familiar basada en escenas que hace que la lógica de juegos sea intuitiva, incluso en dispositivos con poca memoria.',
-    'code.feature1': 'Control determinístico del ciclo de juego',
-    'code.feature2': 'API modular organizada por namespaces',
-    'code.feature3': 'Pooling automático de memoria para actores',
+    'code.feature1': 'Timestep fijo de 1/60s para físicas determinísticas',
+    'code.feature2': 'Planificador de audio multi-núcleo (Núcleo 0) + bucle de juego (Núcleo 1)',
+    'code.feature3': 'Drivers agnósticos de plataforma con selección automática FPU/Fixed16',
     
     // Features
     'features.title': 'Análisis Técnico',
     'features.subtitle': 'Una herramienta modular diseñada para el desarrollador retro moderno.',
     'features.scene_system.title': 'Sistema de Escenas',
-    'features.scene_system.description': 'Jerarquía inspirada en Godot con Scenes, Actors y PhysicsActors para una gestión intuitiva de entidades.',
-    'features.sprite_engine.title': 'Motor de Sprites',
-    'features.sprite_engine.description': 'Sistema determinístico de sprites 1bpp/2bpp/4bpp con soporte para múltiples capas y animaciones basadas en pasos.',
-    'features.physics.title': 'Sistema de Físicas',
-    'features.physics.description': 'Detección de colisiones AABB integrada y PhysicsActor con soporte para gravedad, fricción y restitución.',
-    'features.nes_audio.title': 'Audio NES',
-    'features.nes_audio.description': 'Sintetizador nativo de 4 canales (Pulse, Triangle, Noise) para paisajes sonoros auténticos de 8 bits.',
+    'features.scene_system.description': 'Jerarquía inspirada en Godot con gestión de pila de escenas, control de ciclo de vida de entidades, y tipos especializados de Actor (Static, Kinematic, Rigid) para estructura de juego intuitiva.',
+    'features.multicore_audio.title': 'Audio Multi-Núcleo',
+    'features.multicore_audio.description': 'Sintetizador NES de 4 canales (Pulse, Triangle, Noise) ejecutándose en núcleo dedicado con timing preciso por muestra, cola de comandos sin bloqueos, y mezclador no lineal.',
+    'features.physics.title': 'Físicas Flat Solver',
+    'features.physics.description': 'Solucionador de velocidad basado en impulsos con timestep fijo de 1/60s, fase amplia de Cuadrícula Espacial, CCD para objetos rápidos, y corrección de posición Baumgarte para simulaciones estables.',
+    'features.sprite_graphics.title': 'Sprites y Gráficos',
+    'features.sprite_graphics.description': 'Sprites 1bpp/2bpp/4bpp con soporte multi-capa, sistema de fuentes bitmap nativo (Font5x7), modo de paleta dual, y culling de viewport para rendimiento óptimo.',
     'features.ui_toolkit.title': 'Kit de UI',
-    'features.ui_toolkit.description': 'Diseños inteligentes y componentes interactivos como Botones, Etiquetas y Checkboxes para interfaces ricas.',
+    'features.ui_toolkit.description': 'Diseños inteligentes (Vertical, Horizontal, Grid, Anchor) con posicionamiento automático, soporte de scroll, navegación D-pad, y componentes interactivos (Botones, Etiquetas, Paneles).',
     'features.optimization.title': 'Optimizado para Hardware',
-    'features.optimization.description': 'Aprovecha DMA, SPI e IRAM en ESP32 para máximo rendimiento y framerates fluidos.',
+    'features.optimization.description': 'Pipelining DMA para pantallas, renderizado en caché IRAM, buffers estáticos compartidos (~100KB ahorrados), y overclocking I2C 1MHz para 60 FPS sostenidos en ESP32.',
     
     // Showcase
     'showcase.title': 'Un Código. <span class="text-secondary">Dos Mundos.</span>',
     'showcase.pc.title': 'Simulación PC (SDL2)',
     'showcase.pc.subtitle': 'Prototipado Rápido',
-    'showcase.pc.description': 'Depura tu lógica de juego, prueba físicas e itera en diseños de UI directamente en tu escritorio con soporte completo de recarga en caliente.',
+    'showcase.pc.description': 'Prueba la lógica del juego con timing de audio preciso por muestra y físicas determinísticas. Mismo comportamiento que hardware ESP32, sin cambios de código.',
     'showcase.esp32.title': 'Hardware ESP32 (SPI)',
     'showcase.esp32.subtitle': 'Despliegue en Hardware',
-    'showcase.esp32.description': 'Despliega en microcontroladores con recursos limitados. PixelRoot32 aprovecha DMA y SPI para garantizar un rendimiento fluido en hardware real.',
+    'showcase.esp32.description': 'Arquitectura multi-núcleo (Núcleo 0: audio, Núcleo 1: bucle de juego) con pipelining DMA y renderizado en caché IRAM para 60 FPS sostenidos en hardware con recursos limitados.',
     
     // CTA
     'cta.cta1': 'EMPEZAR AHORA',
@@ -273,6 +273,6 @@ export const i18n = new I18nStore({
     'tools.sprite_compiler.title': 'Compilador de Sprites',
     'tools.sprite_compiler.description': 'Convierte hojas de sprites PNG en archivos de cabecera C optimizados (.h) compatibles con PixelRoot32. Soporta sprites en capas, múltiples profundidades de color (1bpp/2bpp/4bpp) y detección automática de paletas.',
     'tools.tilemap_editor.title': 'Editor de Tilemaps',
-    'tools.tilemap_editor.description': 'Crea mapas y escenas basados en tiles multi-capa para PixelRoot32. Incluye espacio de trabajo integrado, selección inteligente de tiles y exportación a código C++ optimizado para hardware ESP32.'
+    'tools.tilemap_editor.description': 'Crea mapas y escenas basados en tiles multi-capa para PixelRoot32. Incluye espacio de trabajo integrado, selección inteligente de tiles y exportación a código c++17 optimizado para hardware ESP32.'
   }
 });

@@ -48,17 +48,26 @@ export function CodeBlock(): string {
           <div class="p-6 font-mono text-sm overflow-x-auto leading-relaxed">
             <pre class="text-text-high"><span class="text-retro">#include</span> <span class="text-secondary">&lt;core/Engine.h&gt;</span>
 <span class="text-retro">#include</span> <span class="text-secondary">&lt;graphics/DisplayConfig.h&gt;</span>
+<span class="text-retro">#include</span> <span class="text-secondary">&lt;input/InputConfig.h&gt;</span>
+<span class="text-retro">#include</span> <span class="text-secondary">&lt;audio/AudioConfig.h&gt;</span>
 
-<span class="text-primary">pixelroot32::graphics::DisplayConfig</span> display;
-<span class="text-primary">pixelroot32::core::Engine</span> engine(display);
+<span class="text-primary">using namespace</span> pixelroot32;
+
+<span class="text-text-muted">// Configure subsystems</span>
+graphics::<span class="text-primary">DisplayConfig</span> display = <span class="text-text-muted">/* ... */</span>;
+input::<span class="text-primary">InputConfig</span> input(<span class="text-secondary">3</span>, <span class="text-secondary">12</span>, <span class="text-secondary">14</span>, <span class="text-secondary">27</span>);
+audio::<span class="text-primary">AudioConfig</span> audio = <span class="text-text-muted">/* ... */</span>;
+
+<span class="text-text-muted">// Multi-core: Core 0 (audio) + Core 1 (game)</span>
+core::<span class="text-primary">Engine</span> engine(display, input, audio);
 
 <span class="text-primary">void</span> <span class="text-secondary">setup</span>() {
     engine.<span class="text-secondary">init</span>();
-    engine.<span class="text-secondary">setScene</span>(&mainMenu);
+    engine.<span class="text-secondary">setScene</span>(&gameScene);
 }
 
 <span class="text-primary">void</span> <span class="text-secondary">loop</span>() {
-    engine.<span class="text-secondary">run</span>(); 
+    engine.<span class="text-secondary">run</span>(); <span class="text-text-muted">// Fixed 1/60s timestep</span>
 }</pre>
           </div>
         </div>
