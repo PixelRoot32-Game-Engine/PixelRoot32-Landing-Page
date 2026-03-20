@@ -12,3 +12,5 @@ export { Tools, initToolsImageModal } from './Tools';
 export { WASMDemo } from './WASMDemo';
 export { CTA } from './CTA';
 export { Footer } from './Footer';
+export { Platforms } from './Platforms';
+export { ModularCompilation } from './ModularCompilation';
