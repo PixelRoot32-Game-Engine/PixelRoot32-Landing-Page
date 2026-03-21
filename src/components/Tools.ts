@@ -41,25 +41,25 @@ export function Tools(): string {
 
       <!-- Tilemap Editor -->
       <div class="space-y-6">
-        <div class="aspect-video bg-background border-4 border-border-ui shadow-block flex items-center justify-center relative overflow-hidden opacity-75 cursor-pointer" data-tool-image="tilemap-editor">
-          <img src="/tools/tilemap-editor.webp" alt="PixelRoot32 Tilemap Editor" class="absolute inset-0 w-full h-full object-cover grayscale-[0.3]" style="object-position: top left;" />
-          <div class="absolute inset-0 bg-background/40"></div>
+        <div class="aspect-video bg-background border-4 border-border-ui shadow-block flex items-center justify-center relative group overflow-hidden cursor-pointer" data-tool-image="tilemap-editor">
+          <img src="/tools/tilemap-editor.webp" alt="PixelRoot32 Tilemap Editor" class="absolute inset-0 w-full h-full object-cover grayscale-[0.2]" style="object-position: top left;" />
+          <div class="absolute inset-0 bg-background/30 group-hover:bg-background/10 transition-colors"></div>
           <div class="absolute bottom-4 right-4 bg-retro text-background px-2 py-1 text-[10px] font-bold z-10">
             ${i18n.t('tools.coming_soon')}
           </div>
         </div>
         <div class="text-left px-4">
-          <h3 class="text-xl font-bold mb-2 italic text-text-muted">${i18n.t('tools.tilemap_editor.title')}</h3>
+          <h3 class="text-xl font-bold mb-2 italic">${i18n.t('tools.tilemap_editor.title')}</h3>
           <p class="text-text-muted text-sm mb-4">${i18n.t('tools.tilemap_editor.description')}</p>
           <div class="flex items-center gap-4">
             <a href="https://pixelroot32.com" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-surface border-2 border-border-ui hover:border-retro transition-all shadow-block hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-block-hover text-xs font-mono font-bold group/btn">
-              <span class="group-hover/btn:text-retro transition-colors">pixelroot32.com</span>
+              <span class="group-hover/btn:text-retro transition-colors">${i18n.t('tools.learn_more')}</span>
               <svg class="w-3 h-3 text-text-muted group-hover/btn:text-retro transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
             </a>
             <div class="flex items-center gap-2 text-[10px] text-text-muted font-mono uppercase tracking-wider">
               <span>${i18n.t('tools.by')}</span>
               <span class="w-1 h-1 rounded-full bg-border-ui"></span>
-              <span>Web</span>
+              <span>PixelRoot32</span>
             </div>
           </div>
         </div>
@@ -135,7 +135,7 @@ export function initToolsImageModal(container: HTMLElement = document.body): voi
       title: i18n.t('tools.tilemap_editor.title'),
       description: i18n.t('tools.tilemap_editor.description'),
       link: 'https://pixelroot32.com',
-      linkText: 'pixelroot32.com',
+      linkText: i18n.t('tools.learn_more'),
       badge: i18n.t('tools.coming_soon'),
       badgeColor: 'retro'
     }
