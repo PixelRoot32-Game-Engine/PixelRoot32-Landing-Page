@@ -5,7 +5,7 @@
 import { i18n } from '../i18n';
 
 export function ModularCompilation(): string {
-  return `<section id="modular" class="py-24 bg-surface/30 border-y border-border-ui relative overflow-hidden">
+  return `<section id="modular" class="py-24 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="mb-16 text-center">
       <h2 class="text-3xl lg:text-5xl font-black mb-4 tracking-tight">${i18n.t('modular.title')}</h2>
