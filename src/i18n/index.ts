@@ -120,7 +120,7 @@ export const i18n = new I18nStore({
     'features.sprite_graphics.title': 'Sprite & Graphics',
     'features.sprite_graphics.description': '1bpp/2bpp/4bpp sprites with multi-layer support, native bitmap font system (Font5x7), dual palette mode, and viewport culling for optimal performance.',
     'features.ui_toolkit.title': 'UI Toolkit',
-    'features.ui_toolkit.description': 'Smart layouts (Vertical, Horizontal, Grid, Anchor) with automatic positioning, scroll support, D-pad navigation, and interactive components (Buttons, Labels, Panels).',
+    'features.ui_toolkit.description': 'Smart layouts (Vertical, Horizontal, Grid, Anchor) with automatic positioning, scroll support, D-pad navigation, Touchscreen support, and interactive components (Buttons, Sliders, Checkboxes, Labels, Panels).',
     'features.optimization.title': 'Memory Architecture',
     'features.optimization.description': 'Resolution Scaling (72% RAM savings). DMA pipelining for displays. IRAM-cached rendering. Flash abstraction for PROGMEM access. ~100KB game loop footprint.', 
     
@@ -248,7 +248,7 @@ export const i18n = new I18nStore({
     'features.sprite_graphics.title': 'Sprites y Gráficos',
     'features.sprite_graphics.description': 'Sprites 1bpp/2bpp/4bpp con soporte multi-capa, sistema de fuentes bitmap nativo (Font5x7), modo de paleta dual, y culling de viewport para rendimiento óptimo.',
     'features.ui_toolkit.title': 'Kit de UI',
-    'features.ui_toolkit.description': 'Diseños inteligentes (Vertical, Horizontal, Grid, Anchor) con posicionamiento automático, soporte de scroll, navegación D-pad, y componentes interactivos (Botones, Etiquetas, Paneles).',
+    'features.ui_toolkit.description': 'Diseños inteligentes (Vertical, Horizontal, Grid, Anchor) con posicionamiento automático, soporte de scroll, navegación D-pad, soporte de pantalla táctil, y componentes interactivos (Botones, Sliders, Checkboxes, Sliders, Etiquetas, Paneles).',
     'features.optimization.title': 'Arquitectura de Memoria',
     'features.optimization.description': 'Resolution Scaling (72% ahorro de RAM). Pipelining DMA para displays. Rendering en caché IRAM. Abstracción Flash para acceso PROGMEM. ~100KB footprint del bucle de juego.',
     
