@@ -26,7 +26,7 @@ export function BuiltWith(): string {
             <div class="flex items-center gap-2 text-xs text-text-muted">
               <span class="font-mono">${i18n.t('builtwith.by')}</span>
               <span>•</span>
-              <a href="https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Samples/tree/master/src/examples/Games/SpaceInvaders" target="_blank" class="hover:text-primary transition-colors font-mono">${i18n.t('builtwith.view')}</a>
+              <a href="https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tree/main/examples/space_invaders" target="_blank" class="hover:text-primary transition-colors font-mono">${i18n.t('builtwith.view')}</a>
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@ export function BuiltWith(): string {
             <div class="flex items-center gap-2 text-xs text-text-muted">
               <span class="font-mono">${i18n.t('builtwith.by')}</span>
               <span>•</span>
-              <a href="https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Samples/tree/master/src/examples/Games/Metroidvania" target="_blank" class="hover:text-secondary transition-colors font-mono">${i18n.t('builtwith.view')}</a>
+              <a href="https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tree/main/examples/metroidvania" target="_blank" class="hover:text-secondary transition-colors font-mono">${i18n.t('builtwith.view')}</a>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@ export function BuiltWith(): string {
             <div class="flex items-center gap-2 text-xs text-text-muted">
               <span class="font-mono">${i18n.t('builtwith.by')}</span>
               <span>•</span>
-              <a href="https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Samples/tree/master/src/examples/Games/TicTacToe" target="_blank" class="hover:text-retro transition-colors font-mono">${i18n.t('builtwith.view')}</a>
+              <a href="https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tree/main/examples/tic_tac_toe" target="_blank" class="hover:text-retro transition-colors font-mono">${i18n.t('builtwith.view')}</a>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@ export function BuiltWith(): string {
     </div>
 
     <div class="mt-12 text-center">
-      <a href="https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Samples/tree/master/src/examples/Games" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-surface border-2 border-border-ui hover:border-primary transition-all font-mono font-bold text-sm">
+      <a href="https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tree/main/examples" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-surface border-2 border-border-ui hover:border-primary transition-all font-mono font-bold text-sm">
         ${i18n.t('builtwith.more_samples')}
       </a>
     </div>
