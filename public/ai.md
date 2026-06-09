@@ -21,7 +21,7 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 
 - **Documentation:** `https://docs.pixelroot32.org`
 - **GitHub (Engine):** `https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine`
-- **GitHub (Samples):** `https://github.com/Gperez88/PixelRoot32-Game-Engine-Samples`
+- **GitHub (Samples):** `https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tree/main/examples`
 - **Main Website:** `https://pixelroot32.org`
 
 ### SEO/Technical Resources
@@ -43,9 +43,9 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 
 ### Engine Backend (referenced)
 
-- **Language:** C++17
-- **Platforms:** ESP32/ESP32-S3 (hardware), PC/Native (SDL2)
-- **Build:** PlatformIO, CMake
+- **Language:** C++17 (requires `-std=gnu++17`, `-fno-exceptions`)
+- **Platforms:** ESP32 variants (hardware), PC/Native (SDL2), OLED via u8g2 (SSD1306, SH1106)
+- **Build:** PlatformIO (`lib_deps = gperez88/PixelRoot32-Game-Engine@^1.6.0`)
 
 ---
 
@@ -54,18 +54,19 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 ### Game Engine
 
 1. 2D game development for ESP32 microcontrollers
-2. Scene-based game engine architecture (Godot-style)
-3. Sprite rendering (1bpp/2bpp/4bpp) and tilemaps
-4. "Flat Solver" physics system with AABB/Circle collisions
-5. NES-style 4-channel audio (Pulse, Triangle, Noise)
-6. Modular compilation with configuration flags
-7. Memory optimization (~100KB footprint)
-8. Resolution-independent rendering with scaling
+2. Scene-based game engine architecture (Godot-style) with Fade/Iris/Diagonal Wipe transitions
+3. Camera effects (shake, punch, offset) with zero-allocation operation
+4. Sprite rendering (1bpp/2bpp/4bpp), multi-palette indexing, and O(1) tile animations
+5. "Flat Solver" physics with moving platforms, custom hitboxes, and one-way platforms
+6. NES-style 8-voice dynamic audio (Pulse, Triangle, Noise, Sine, Saw)
+7. Modular compilation with `PIXELROOT32_ENABLE_*` flags
+8. Memory optimization (~100KB footprint, Dirty Regions pipeline, static tilemap cache)
+9. Resolution-independent rendering with scaling
 
 ### Embedded Development
 
 1. Multi-core programming on ESP32 (Core 0: audio, Core 1: game loop)
-2. Fixed16 arithmetic for platforms without FPU
+2. Fixed16 arithmetic for platforms without FPU (ESP32-C3, S2, C6)
 3. DMA pipelining for displays
 4. IRAM-cached rendering
 5. Lock-free SPSC queues for audio
@@ -73,7 +74,7 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 ### Tools
 
 1. Sprite Compiler - PNG to C++ headers conversion
-2. Tilemap Editor - Multi-layer map editor
+2. Tilemap Editor - Multi-layer map editor (coming soon)
 
 ---
 
@@ -81,7 +82,7 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 
 ### Current Version
 
-- **Engine:** v1.1.0
+- **Engine:** v1.6.0
 - **Landing Page:** v1.0.0
 
 ### Landing Page
@@ -121,17 +122,19 @@ This includes:
 - Architecture overview
 - API reference
 - Physics system documentation
-- Audio subsystem (NES-style)
+- Audio subsystem (8-voice NES-style)
 - Memory management guide
 - Platform compatibility
 - Migration guides
 - Testing guidelines
 
-### Sample Projects
+### Sample Projects (featured on landing)
 
 - Space Invaders (1bpp sprites, scene system)
 - Metroidvania (4bpp tilemaps, platformer physics)
 - Tic-Tac-Toe (turn-based, AI, custom palette)
+
+Additional examples available at: `https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tree/main/examples`
 
 ---
 

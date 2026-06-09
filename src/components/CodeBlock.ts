@@ -35,7 +35,28 @@ export function CodeBlock(): string {
         </ul>
       </div>
 
-      <div class="lg:w-1/2 w-full">
+      <div class="lg:w-1/2 w-full space-y-4">
+        <div class="bg-surface border border-border-ui shadow-block overflow-hidden">
+          <div class="flex items-center justify-between px-4 py-2 bg-background border-b border-border-ui">
+            <div class="flex gap-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-retro/40"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-secondary/40"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-primary/40"></div>
+            </div>
+            <span class="text-[10px] font-mono text-text-muted uppercase tracking-widest">platformio.ini</span>
+          </div>
+          <div class="p-6 font-mono text-sm overflow-x-auto leading-relaxed">
+            <pre class="text-text-high"><span class="text-text-muted">; PixelRoot32 v1.6.0</span>
+build_unflags = -std=gnu++11
+build_flags =
+    -std=gnu++17
+    -fno-exceptions
+
+lib_deps =
+    gperez88/PixelRoot32-Game-Engine@^1.6.0</pre>
+          </div>
+        </div>
+
         <div class="bg-surface border border-border-ui shadow-block overflow-hidden">
           <div class="flex items-center justify-between px-4 py-2 bg-background border-b border-border-ui">
             <div class="flex gap-1.5">

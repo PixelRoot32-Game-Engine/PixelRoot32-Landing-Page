@@ -10,7 +10,7 @@ export function Navigation(): string {
     links: [
       { label: i18n.t('nav.features'), href: '#features' },
       { label: i18n.t('nav.documentation'), href: 'https://docs.pixelroot32.org' },
-      { label: i18n.t('nav.samples'), href: 'https://github.com/Gperez88/PixelRoot32-Game-Engine-Samples' },
+      { label: i18n.t('nav.samples'), href: 'https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tree/main/examples' },
       { label: i18n.t('nav.github'), href: 'https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine', variant: 'outline' }
     ],
     i18n: i18n

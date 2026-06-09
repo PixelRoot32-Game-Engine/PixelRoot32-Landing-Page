@@ -35,7 +35,7 @@ export function BuiltWith(): string {
       <!-- Project 2 - Metroidvania -->
       <div class="group cursor-pointer">
         <div class="bg-surface border-2 border-border-ui hover:border-secondary transition-all shadow-block hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-block-hover overflow-hidden relative aspect-square">
-          <img src="/build_with/meroidvania-game.webp" alt="Metroidvania Game" class="absolute inset-0 w-full h-full object-cover" />
+          <img src="/build_with/metroidvania-game.webp" alt="Metroidvania Game" class="absolute inset-0 w-full h-full object-cover" />
           <div class="absolute top-2 right-2 bg-secondary/20 backdrop-blur-sm px-2 py-1 rounded border border-secondary/30">
             <span class="text-[10px] font-mono font-bold text-secondary uppercase">ESP32</span>
           </div>

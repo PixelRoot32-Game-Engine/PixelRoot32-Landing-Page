@@ -8,9 +8,9 @@ import { Card } from 'pixelroot32-components-landing-page';
 export function Features(): string {
   return `<section id="features" class="py-24 bg-surface/30 border-y border-border-ui">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mb-16">
+    <div class="mb-16 text-center">
       <h2 class="text-3xl lg:text-5xl font-black mb-4 tracking-tight">${i18n.t('features.title')}</h2>
-      <p class="text-text-muted text-lg max-w-2xl">${i18n.t('features.subtitle')}</p>
+      <p class="text-text-muted text-lg max-w-2xl mx-auto">${i18n.t('features.subtitle')}</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
