@@ -88,10 +88,10 @@ export const i18n = new I18nStore({
     'nav.github': 'GitHub',
     
     // Hero
-    'hero.version': 'v1.0.0 available',  // This will be replaced dynamically
+    'hero.version': 'v1.6.0 available',  // This will be replaced dynamically
     'hero.version.available': 'available',
     'hero.title': '60 FPS on ESP32. ~100KB RAM. Zero compromises.',
-    'hero.subtitle': 'A modular C++17 engine with scene-based architecture. Build for ESP32 hardware and simulate on PC for rapid logic testing and debugging.',
+    'hero.subtitle': 'A modular C++17 engine with Godot-inspired scenes, camera effects, and scene transitions. Build for ESP32 hardware and simulate on PC for rapid testing.',
     'hero.cta.start': 'START BUILDING',
     'hero.cta.view': 'VIEW SOURCE',
     'hero.feature1.title': '01. ~100KB RAM Footprint',
@@ -112,17 +112,17 @@ export const i18n = new I18nStore({
     'features.title': 'Technical Deep-Dive',
     'features.subtitle': 'A modular toolkit designed for embedded game development on resource-constrained hardware.',
     'features.scene_system.title': 'Scene System',
-    'features.scene_system.description': 'Godot-inspired hierarchy with Scene stack management, Entity lifecycle control, and specialized Actor types (Static, Kinematic, Rigid) for intuitive game structure.',
+    'features.scene_system.description': 'Godot-inspired hierarchy with scene stack management, Fade/Iris/Diagonal Wipe transitions, scene reuse lifecycle, camera effects (shake, punch, offset), and Actor types (Static, Kinematic, Rigid) for intuitive game structure.',
     'features.multicore_audio.title': 'Multi-Core Audio',
     'features.multicore_audio.description': '8-voice dynamic synthesizer (Pulse w/ sweep, Triangle w/ sweep, Sine, Saw, Noise) with voice stealing, running on dedicated core with sample-accurate timing, lock-free command queue, and non-linear mixer.',
     'features.physics.title': 'Flat Solver Physics',
-    'features.physics.description': 'Impulse-based velocity solver with fixed 1/60s timestep, Spatial Grid broadphase, CCD for fast objects, and Baumgarte position correction for stable simulations.',
+    'features.physics.description': 'Flat Solver impulse-based physics with moving platforms, floor velocity inheritance, custom hitboxes, one-way platforms, Spatial Grid broadphase, CCD, and Baumgarte correction at a fixed 1/60s timestep.',
     'features.sprite_graphics.title': 'Sprite & Graphics',
-    'features.sprite_graphics.description': '1bpp/2bpp/4bpp sprites with multi-layer support, native bitmap font system (Font5x7), dual palette mode, and viewport culling for optimal performance.',
+    'features.sprite_graphics.description': '1bpp/2bpp/4bpp sprites with multi-layer support, multi-palette indexing, O(1) tile animations, native bitmap font (Font5x7), flip/rotation, and viewport culling for optimal performance.',
     'features.ui_toolkit.title': 'UI Toolkit',
     'features.ui_toolkit.description': 'Smart layouts (Vertical, Horizontal, Grid, Anchor) with automatic positioning, scroll support, D-pad navigation, Touchscreen support, and interactive components (Buttons, Sliders, Checkboxes, Labels, Panels).',
     'features.optimization.title': 'Memory Architecture',
-    'features.optimization.description': 'Resolution Scaling (72% RAM savings). DMA pipelining for displays. IRAM-cached rendering. Flash abstraction for PROGMEM access. ~100KB game loop footprint.', 
+    'features.optimization.description': 'Dirty Regions pipeline with static tilemap cache. Resolution Scaling (72% RAM savings). DMA pipelining. IRAM-cached rendering. Flash abstraction for PROGMEM. ~100KB game loop footprint.',
     
     // Showcase
     'showcase.title': 'One Codebase. Two Worlds.',
@@ -169,7 +169,7 @@ export const i18n = new I18nStore({
     'platforms.table.cores': 'Cores',
     'platforms.table.scalar': 'Scalar',
     'platforms.table.audio': 'Audio',
-    'platforms.note': 'FPU = Floating Point Unit. Fixed16 = 16.16 fixed-point arithmetic for platforms without FPU. All ESP32 variants support I2S audio.',
+    'platforms.note': 'FPU = Floating Point Unit. Fixed16 = 16.16 fixed-point arithmetic for platforms without FPU. All ESP32 variants support I2S audio. Monochrome OLED displays (SSD1306, SH1106) supported via u8g2.',
     
     // Modular
     'modular.title': 'Modular Compilation',
@@ -216,10 +216,10 @@ export const i18n = new I18nStore({
     'nav.github': 'GitHub',
     
     // Hero
-    'hero.version': 'v0.2.0-dev disponible', // This will be replaced dynamically
+    'hero.version': 'v1.6.0 disponible', // This will be replaced dynamically
     'hero.version.available': 'disponible',
     'hero.title': '60 FPS en ESP32. ~100KB RAM. Sin compromisos.',
-    'hero.subtitle': 'Un motor modular en C++17 con arquitectura basada en escenas. Desarrolla para hardware ESP32 y simula en PC para testear lógica y depurar rápidamente.',
+    'hero.subtitle': 'Motor modular en C++17 con escenas estilo Godot, efectos de cámara y transiciones de escena. Desarrolla para ESP32 y simula en PC para testear rápidamente.',
     'hero.cta.start': 'EMPEZAR A CONSTRUIR',
     'hero.cta.view': 'VER CÓDIGO FUENTE',
     'hero.feature1.title': '01. ~100KB Huella de RAM',
@@ -240,17 +240,17 @@ export const i18n = new I18nStore({
     'features.title': 'Análisis Técnico',
     'features.subtitle': 'Un toolkit modular diseñado para desarrollo de juegos embebidos en hardware con recursos limitados.',
     'features.scene_system.title': 'Sistema de Escenas',
-    'features.scene_system.description': 'Jerarquía inspirada en Godot con gestión de pila de escenas, control de ciclo de vida de entidades, y tipos especializados de Actor (Static, Kinematic, Rigid) para estructura de juego intuitiva.',
+    'features.scene_system.description': 'Jerarquía inspirada en Godot con pila de escenas, transiciones Fade/Iris/Diagonal Wipe, reutilización de escenas, efectos de cámara (shake, punch, offset) y tipos Actor (Static, Kinematic, Rigid).',
     'features.multicore_audio.title': 'Audio Multi-Núcleo',
     'features.multicore_audio.description': 'Sintetizador dinámico de 8 voces (Pulse c/ sweep, Triangle c/ sweep, Sine, Saw, Noise) con voice stealing, ejecutándose en núcleo dedicado con timing preciso por muestra, cola de comandos sin bloqueos, y mezclador no lineal.',
     'features.physics.title': 'Físicas Flat Solver',
-    'features.physics.description': 'Solucionador de velocidad basado en impulsos con timestep fijo de 1/60s, fase amplia de Cuadrícula Espacial, CCD para objetos rápidos, y corrección de posición Baumgarte para simulaciones estables.',
+    'features.physics.description': 'Físicas Flat Solver con plataformas móviles, herencia de velocidad del suelo, hitboxes personalizados, plataformas unidireccionales, Cuadrícula Espacial, CCD y corrección Baumgarte a 1/60s.',
     'features.sprite_graphics.title': 'Sprites y Gráficos',
-    'features.sprite_graphics.description': 'Sprites 1bpp/2bpp/4bpp con soporte multi-capa, sistema de fuentes bitmap nativo (Font5x7), modo de paleta dual, y culling de viewport para rendimiento óptimo.',
+    'features.sprite_graphics.description': 'Sprites 1bpp/2bpp/4bpp multi-capa, indexación multi-paleta, animaciones de tiles O(1), fuente bitmap (Font5x7), flip/rotación y culling de viewport.',
     'features.ui_toolkit.title': 'Kit de UI',
     'features.ui_toolkit.description': 'Diseños inteligentes (Vertical, Horizontal, Grid, Anchor) con posicionamiento automático, soporte de scroll, navegación D-pad, soporte de pantalla táctil, y componentes interactivos (Botones, Sliders, Checkboxes, Sliders, Etiquetas, Paneles).',
     'features.optimization.title': 'Arquitectura de Memoria',
-    'features.optimization.description': 'Resolution Scaling (72% ahorro de RAM). Pipelining DMA para displays. Rendering en caché IRAM. Abstracción Flash para acceso PROGMEM. ~100KB footprint del bucle de juego.',
+    'features.optimization.description': 'Pipeline Dirty Regions con caché estática de tilemaps. Resolution Scaling (72% ahorro RAM). Pipelining DMA. Rendering en caché IRAM. Abstracción Flash PROGMEM. ~100KB en el bucle de juego.',
     
     // Showcase
     'showcase.title': 'Un Código. <span class="text-secondary">Dos Mundos.</span>',
@@ -298,7 +298,7 @@ export const i18n = new I18nStore({
     'platforms.table.cores': 'Núcleos',
     'platforms.table.scalar': 'Scalar',
     'platforms.table.audio': 'Audio',
-    'platforms.note': 'FPU = Unidad de Punto Flotante. Fixed16 = Aritmética de punto fijo 16.16 para plataformas sin FPU. Todas las variantes ESP32 soportan audio I2S.',
+    'platforms.note': 'FPU = Unidad de Punto Flotante. Fixed16 = Aritmética de punto fijo 16.16 para plataformas sin FPU. Todas las variantes ESP32 soportan audio I2S. Displays OLED monocromo (SSD1306, SH1106) vía u8g2.',
     
     // Modular
     'modular.title': 'Compilación Modular',

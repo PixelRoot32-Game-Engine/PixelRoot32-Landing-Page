@@ -21,7 +21,7 @@ export function CTA(): string {
         label: i18n.t('cta.cta2'),
         variant: 'outline',
         className: 'w-full sm:w-auto px-10 py-5 text-xl',
-        href: 'https://github.com/Gperez88/PixelRoot32-Game-Engine-Samples',
+        href: 'https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tree/main/examples',
         target: '_blank'
       })}
     </div>
