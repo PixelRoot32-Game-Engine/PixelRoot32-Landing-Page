@@ -25,34 +25,39 @@ export function ModularCompilation(): string {
             </tr>
           </thead>
           <tbody class="divide-y divide-border-ui/50">
+            <!--
+              Measured 2026-07-26 on esp32dev (PlatformIO size A/B), 128x128 bench
+              with subsystem refs linked. See Engine scripts/modular_size_results.json.
+              Audio RAM includes sizeof(ESP32AudioScheduler) heap (ApuCore); not task/DMA.
+            -->
             <tr class="hover:bg-background/50 transition-colors">
               <td class="py-4 px-4 font-mono">${i18n.t('modular.audio')}</td>
-              <td class="text-center py-4 px-4 font-mono text-secondary">~8 KB</td>
-              <td class="text-center py-4 px-4 font-mono">~15 KB</td>
+              <td class="text-center py-4 px-4 font-mono text-secondary">~14 KB</td>
+              <td class="text-center py-4 px-4 font-mono">~10 KB</td>
               <td class="py-4 px-4 font-mono text-xs text-text-muted">PIXELROOT32_ENABLE_AUDIO</td>
             </tr>
             <tr class="hover:bg-background/50 transition-colors">
               <td class="py-4 px-4 font-mono">${i18n.t('modular.physics')}</td>
-              <td class="text-center py-4 px-4 font-mono text-secondary">~12 KB</td>
-              <td class="text-center py-4 px-4 font-mono">~25 KB</td>
+              <td class="text-center py-4 px-4 font-mono text-secondary">~9 KB</td>
+              <td class="text-center py-4 px-4 font-mono">~7 KB</td>
               <td class="py-4 px-4 font-mono text-xs text-text-muted">PIXELROOT32_ENABLE_PHYSICS</td>
             </tr>
             <tr class="hover:bg-background/50 transition-colors">
               <td class="py-4 px-4 font-mono">${i18n.t('modular.ui')}</td>
-              <td class="text-center py-4 px-4 font-mono text-secondary">~4 KB</td>
-              <td class="text-center py-4 px-4 font-mono">~20 KB</td>
-              <td class="py-4 px-4 font-mono text-xs text-text-muted">PIXELROOT32_ENABLE_UI</td>
+              <td class="text-center py-4 px-4 font-mono text-secondary">~9 KB</td>
+              <td class="text-center py-4 px-4 font-mono">~12 KB</td>
+              <td class="py-4 px-4 font-mono text-xs text-text-muted">PIXELROOT32_ENABLE_UI_SYSTEM</td>
             </tr>
             <tr class="hover:bg-background/50 transition-colors">
               <td class="py-4 px-4 font-mono">${i18n.t('modular.particles')}</td>
-              <td class="text-center py-4 px-4 font-mono text-secondary">~6 KB</td>
-              <td class="text-center py-4 px-4 font-mono">~10 KB</td>
+              <td class="text-center py-4 px-4 font-mono text-secondary">~2 KB</td>
+              <td class="text-center py-4 px-4 font-mono">~5 KB</td>
               <td class="py-4 px-4 font-mono text-xs text-text-muted">PIXELROOT32_ENABLE_PARTICLES</td>
             </tr>
             <tr class="border-t-2 border-border-ui bg-background/30">
               <td class="py-4 px-4 font-mono font-bold text-primary">${i18n.t('modular.all')}</td>
-              <td class="text-center py-4 px-4 font-mono font-bold text-primary">~30 KB</td>
-              <td class="text-center py-4 px-4 font-mono font-bold text-primary">~70 KB</td>
+              <td class="text-center py-4 px-4 font-mono font-bold text-primary">~33 KB</td>
+              <td class="text-center py-4 px-4 font-mono font-bold text-primary">~35 KB</td>
               <td class="py-4 px-4 font-mono text-xs text-text-muted">${i18n.t('modular.all_flags')}</td>
             </tr>
           </tbody>

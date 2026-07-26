@@ -4,7 +4,7 @@
  */
 
 const GITHUB_API_URL = 'https://api.github.com/repos/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tags';
-const FALLBACK_VERSION = 'v1.6.0';
+const FALLBACK_VERSION = 'v1.6.1';
 
 let cachedVersion: string | null = null;
 

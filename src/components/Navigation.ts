@@ -9,8 +9,11 @@ export function Navigation(): string {
     subtitle: '',
     links: [
       { label: i18n.t('nav.features'), href: '#features' },
+      { label: i18n.t('nav.platforms'), href: '#platforms' },
+      { label: i18n.t('nav.modular'), href: '#modular' },
+      { label: i18n.t('nav.samples'), href: '#built-with' },
+      { label: i18n.t('nav.tools'), href: '#tools' },
       { label: i18n.t('nav.documentation'), href: 'https://docs.pixelroot32.org' },
-      { label: i18n.t('nav.samples'), href: 'https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tree/main/examples' },
       { label: i18n.t('nav.github'), href: 'https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine', variant: 'outline' }
     ],
     i18n: i18n
