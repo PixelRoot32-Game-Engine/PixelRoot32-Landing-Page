@@ -45,7 +45,7 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 
 - **Language:** C++17 (requires `-std=gnu++17`, `-fno-exceptions`)
 - **Platforms:** ESP32 variants (hardware), PC/Native (SDL2), OLED via u8g2 (SSD1306, SH1106)
-- **Build:** PlatformIO (`lib_deps = gperez88/PixelRoot32-Game-Engine@^1.6.0`)
+- **Build:** PlatformIO (`lib_deps = gperez88/PixelRoot32-Game-Engine@^1.6.1`)
 
 ---
 
@@ -57,24 +57,24 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 2. Scene-based game engine architecture (Godot-style) with Fade/Iris/Diagonal Wipe transitions
 3. Camera effects (shake, punch, offset) with zero-allocation operation
 4. Sprite rendering (1bpp/2bpp/4bpp), multi-palette indexing, and O(1) tile animations
-5. "Flat Solver" physics with moving platforms, custom hitboxes, and one-way platforms
+5. "Flat Solver" physics with Static/Kinematic/Rigid/Sensor actors, moving platforms, custom hitboxes, and one-way platforms
 6. NES-style 8-voice dynamic audio (Pulse, Triangle, Noise, Sine, Saw)
 7. Modular compilation with `PIXELROOT32_ENABLE_*` flags
-8. Memory optimization (~100KB footprint, Dirty Regions pipeline, static tilemap cache)
+8. Memory optimization (~100KB static RAM on measured ESP32 128×128 full build; modular flags save ~14/9/9/2 KB RAM for Audio/Physics/UI/Particles; optional Dirty Regions pipeline via build flag, static tilemap cache)
 9. Resolution-independent rendering with scaling
 
 ### Embedded Development
 
-1. Multi-core programming on ESP32 (Core 0: audio, Core 1: game loop)
+1. Multi-core programming on dual-core ESP32 (Core 0: audio, Core 1: game loop when available)
 2. Fixed16 arithmetic for platforms without FPU (ESP32-C3, S2, C6)
 3. DMA pipelining for displays
 4. IRAM-cached rendering
-5. Lock-free SPSC queues for audio
+5. Lock-free SPSC command queues for audio
 
 ### Tools
 
 1. Sprite Compiler - PNG to C++ headers conversion
-2. Tilemap Editor - Multi-layer map editor (coming soon)
+2. Tilemap Editor - Multi-layer map editor (coming soon; up to 4 render layers matching engine MAX_LAYERS)
 
 ---
 
@@ -82,7 +82,7 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 
 ### Current Version
 
-- **Engine:** v1.6.0
+- **Engine:** v1.6.1
 - **Landing Page:** v1.0.0
 
 ### Landing Page

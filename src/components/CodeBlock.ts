@@ -46,14 +46,14 @@ export function CodeBlock(): string {
             <span class="text-[10px] font-mono text-text-muted uppercase tracking-widest">platformio.ini</span>
           </div>
           <div class="p-6 font-mono text-sm overflow-x-auto leading-relaxed">
-            <pre class="text-text-high"><span class="text-text-muted">; PixelRoot32 v1.6.0</span>
+            <pre class="text-text-high"><span class="text-text-muted">; PixelRoot32 v1.6.1</span>
 build_unflags = -std=gnu++11
 build_flags =
     -std=gnu++17
     -fno-exceptions
 
 lib_deps =
-    gperez88/PixelRoot32-Game-Engine@^1.6.0</pre>
+    gperez88/PixelRoot32-Game-Engine@^1.6.1</pre>
           </div>
         </div>
 
@@ -79,7 +79,7 @@ graphics::<span class="text-primary">DisplayConfig</span> display = <span class=
 input::<span class="text-primary">InputConfig</span> input(<span class="text-secondary">3</span>, <span class="text-secondary">12</span>, <span class="text-secondary">14</span>, <span class="text-secondary">27</span>);
 audio::<span class="text-primary">AudioConfig</span> audio = <span class="text-text-muted">/* ... */</span>;
 
-<span class="text-text-muted">// Multi-core: Core 0 (audio) + Core 1 (game)</span>
+<span class="text-text-muted">// Dual-core when available: Core 0 (audio) + Core 1 (game)</span>
 core::<span class="text-primary">Engine</span> engine(display, input, audio);
 
 <span class="text-primary">void</span> <span class="text-secondary">setup</span>() {
