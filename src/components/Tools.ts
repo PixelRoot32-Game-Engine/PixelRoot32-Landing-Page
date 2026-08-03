@@ -44,8 +44,8 @@ export function Tools(): string {
         <div class="aspect-video bg-background border-4 border-border-ui shadow-block flex items-center justify-center relative group overflow-hidden cursor-pointer" data-tool-image="tilemap-editor">
           <img src="/tools/tilemap-editor.webp" alt="PixelRoot32 Tilemap Editor" class="absolute inset-0 w-full h-full object-cover grayscale-[0.2]" style="object-position: top left;" />
           <div class="absolute inset-0 bg-background/30 group-hover:bg-background/10 transition-colors"></div>
-          <div class="absolute bottom-4 right-4 bg-retro text-background px-2 py-1 text-[10px] font-bold z-10">
-            ${i18n.t('tools.coming_soon')}
+          <div class="absolute bottom-4 right-4 bg-secondary text-background px-2 py-1 text-[10px] font-bold z-10">
+            ${i18n.t('tools.available')}
           </div>
         </div>
         <div class="text-left px-4">
