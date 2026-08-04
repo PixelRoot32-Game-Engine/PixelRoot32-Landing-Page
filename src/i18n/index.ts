@@ -210,7 +210,7 @@ export const i18n = new I18nStore({
     'tools.sprite_compiler.title': 'Sprite Compiler',
     'tools.sprite_compiler.description': 'Convert PNG sprite sheets into optimized C header files (.h) compatible with PixelRoot32. Supports layered sprites, multiple color depths (1bpp/2bpp/4bpp), and automatic palette detection.',
     'tools.tilemap_editor.title': 'Tilemap Editor',
-    'tools.tilemap_editor.description': 'Create multi-layer tile-based maps for PixelRoot32. Features: up to 4 render layers (engine MAX_LAYERS), tile attributes, animation support, and direct export to optimized C++ for ESP32 hardware.'
+    'tools.tilemap_editor.description': 'Create multi-layer tile-based maps for PixelRoot32. Features: up to 8 render layers (engine MAX_LAYERS), tile attributes, animation support, and direct export to optimized C++ for ESP32 hardware.'
   },
   es: {
     // Navigation
