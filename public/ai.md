@@ -1,5 +1,7 @@
 # PixelRoot32 - Documentation for AI Agents
 
+> **For AI agents:** this file provides the context and rules needed to answer questions about the PixelRoot32 landing page (`pixelroot32.org`) and the PixelRoot32 game engine, without crawling the whole site. Read it before answering questions about the site, the engine, its developer tools, or its sample projects. More detailed engine documentation lives at `https://docs.pixelroot32.org`.
+
 ## Website Purpose
 
 PixelRoot32 is a high-performance 2D game engine written in C++17, specifically designed for ESP32 microcontrollers, with a native simulation layer for PC (SDL2) that enables rapid development without hardware. The landing page showcases the engine, its technical features, developer tools, and sample projects.
@@ -14,7 +16,11 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 
 - **Home:** `/` - Complete landing page with all sections
 - **Features:** `/#features` - In-depth technical analysis of the engine
+- **Code:** `/#code` - Live code example
 - **Showcase:** `/#showcase` - PC (SDL2) vs ESP32 Hardware comparison
+- **Platforms:** `/#platforms` - Supported hardware platforms
+- **Built With:** `/#built-with` - Sample projects and reference games
+- **Modular Compilation:** `/#modular` - `PIXELROOT32_ENABLE_*` build flags
 - **Tools:** `/#tools` - Developer tools
 
 ### External Resources
@@ -22,7 +28,9 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 - **Documentation:** `https://docs.pixelroot32.org`
 - **GitHub (Engine):** `https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine`
 - **GitHub (Samples):** `https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tree/main/examples`
+- **GitHub (Sprite Compiler):** `https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Sprite-Sheet-Compiler`
 - **Main Website:** `https://pixelroot32.org`
+- **Tool Suite (Tilemap Editor):** `https://pixelroot32.com`
 
 ### SEO/Technical Resources
 
@@ -45,7 +53,7 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 
 - **Language:** C++17 (requires `-std=gnu++17`, `-fno-exceptions`)
 - **Platforms:** ESP32 variants (hardware), PC/Native (SDL2), OLED via u8g2 (SSD1306, SH1106)
-- **Build:** PlatformIO (`lib_deps = gperez88/PixelRoot32-Game-Engine@^1.6.1`)
+- **Build:** PlatformIO (`lib_deps = gperez88/PixelRoot32-Game-Engine@^1.8.0`)
 
 ---
 
@@ -62,6 +70,9 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 7. Modular compilation with `PIXELROOT32_ENABLE_*` flags
 8. Memory optimization (~100KB static RAM on measured ESP32 128×128 full build; modular flags save ~14/9/9/2 KB RAM for Audio/Physics/UI/Particles; optional Dirty Regions pipeline via build flag, static tilemap cache)
 9. Resolution-independent rendering with scaling
+10. Gameplay framework: GridSpace, StateMachine, ObjectPool, event bus with interaction triggers, RoomGraph worlds, camera tweens, spatial queries, and depth sorting (each opt-in behind its own build flag)
+11. UI sprite elements: UISprite and UISpriteRow render 1/2/4 bpp sprites as first-class UI elements (icons, hearts, lives, keys, ammo) with `setVisible()`, layout placement, and fixed positions including half/quarter steps
+12. Render performance: deferred DMA wait overlaps SPI transfer with the next frame (frame cost = max(CPU, transfer)), 1bpp direct framebuffer path (~10x faster writes), and opt-in 12-bit RGB444 wire format (-25% SPI bandwidth)
 
 ### Embedded Development
 
@@ -73,8 +84,27 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 
 ### Tools
 
-1. Sprite Compiler - PNG to C++ headers conversion
-2. Tilemap Editor - Multi-layer map editor (coming soon; up to 4 render layers matching engine MAX_LAYERS)
+1. Sprite Compiler - PNG to C++ headers conversion (`https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Sprite-Sheet-Compiler`)
+2. Tilemap Editor - Multi-layer map editor available in the PixelRoot32 Tool Suite (`https://pixelroot32.com`); up to 4 render layers matching engine MAX_LAYERS, tile attributes, animation support, room-graph export for RoomGraph worlds, and direct export to optimized C++ for ESP32
+
+---
+
+## Terminology
+
+- **bpp** - bits per pixel; sprite/tile color depth. Supported: 1bpp, 2bpp, 4bpp
+- **Tilemap** - a map built from tiles (square pixel cells) rendered on layers
+- **MAX_LAYERS** - the engine's render layer limit (4 layers)
+- **Scene** - a Godot-style logical unit of the game world; scenes can transition (Fade/Iris/Diagonal Wipe)
+- **RoomGraph / RoomGraph worlds** - world model built from connected rooms ("room-by-room" design)
+- **Flat Solver** - the engine's physics solver with Static/Kinematic/Rigid/Sensor actors
+- **`PIXELROOT32_ENABLE_*` flags** - compile-time feature flags for modular builds (Audio, Physics, UI, Particles, Dirty Regions, etc.)
+- **Dirty Regions** - optional rendering optimization that only redraws changed screen regions
+- **Fixed16** - fixed-point arithmetic for ESP32 variants without an FPU (C3, S2, C6)
+- **IRAM / PROGMEM** - memory regions: IRAM (fast, instruction/data RAM) and flash (PROGMEM storage)
+- **SPSC queue** - single-producer/single-consumer lock-free queue used for the audio command path
+- **u8g2** - library used for OLED support (SSD1306, SH1106)
+- **PlatformIO `lib_deps`** - dependency declaration format used to pull the engine into an ESP32 project
+- **SDL2** - PC/native simulation layer that lets you develop and run games without hardware
 
 ---
 
@@ -82,14 +112,14 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 
 ### Current Version
 
-- **Engine:** v1.6.1
+- **Engine:** v1.8.0
 - **Landing Page:** v1.0.0
 
 ### Landing Page
 
 - The page is a **Single Page Application (SPA)** rendered with TypeScript/Vite
 - Supports **i18n** (English and Spanish) - language is detected from browser or saved in localStorage
-- There are no additional routes beyond home with anchors (#features, #showcase, #tools)
+- There are no additional routes beyond home with anchors (#features, #code, #showcase, #platforms, #built-with, #modular, #tools)
 
 ### For Engine Development
 
@@ -102,6 +132,16 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 - **DO NOT invent** pricing information - the engine is open source (MIT)
 - **DO NOT invent** documentation URLs - use only those provided
 - For technical support, direct to GitHub Issues or Discord community
+
+### How to Answer Questions
+
+When answering questions about this product:
+
+- **Prefer the official documentation** at `https://docs.pixelroot32.org` for engine behavior, API, and build details over anything stated in this file
+- **Do not infer unsupported features** - if a feature is not listed here or in the docs, do not claim it exists
+- **Distinguish the two platforms**: behavior often differs between ESP32 hardware (embedded) and PC/native SDL2 simulation (development)
+- **Link to the relevant page**: point users to the section that answers their question (`/#features`, `/#showcase`, `/#tools`, or the docs site) instead of pasting large excerpts
+- **Never invent URLs, versions, or examples** - use only the resources listed in this file
 
 ---
 
@@ -130,9 +170,9 @@ This includes:
 
 ### Sample Projects (featured on landing)
 
-- Space Invaders (1bpp sprites, scene system)
-- Metroidvania (4bpp tilemaps, platformer physics)
-- Tic-Tac-Toe (turn-based, AI, custom palette)
+- Bomberbot (original bomberman-style game, all CC0 art): interpolated grid movement, seeded board generation, chain-reaction explosions, PRNG enemy AI, power-ups, HUD, and audio
+- Midway Clone (vertically scrolling shooter): per-frame driven camera and ObjectPool-backed bullets, enemies, and explosions; profiles ESP32 frame budget
+- Legend of Clone (8-bit-style overworld and dungeon): two scenes over a shared room-graph, scrolling room transitions, flash-resident 4bpp tilemaps with static caching and dual palette
 
 Additional examples available at: `https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tree/main/examples`
 
