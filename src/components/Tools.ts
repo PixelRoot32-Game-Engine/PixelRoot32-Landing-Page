@@ -136,8 +136,8 @@ export function initToolsImageModal(container: HTMLElement = document.body): voi
       description: i18n.t('tools.tilemap_editor.description'),
       link: 'https://pixelroot32.com',
       linkText: i18n.t('tools.learn_more'),
-      badge: i18n.t('tools.coming_soon'),
-      badgeColor: 'retro'
+      badge: i18n.t('tools.available'),
+      badgeColor: 'secondary'
     }
   };
 

@@ -92,7 +92,7 @@ export const i18n = new I18nStore({
     'nav.language': 'Language',
     
     // Hero
-    'hero.version': 'v1.6.1 available',  // This will be replaced dynamically
+    'hero.version': 'v1.8.0 available',  // This will be replaced dynamically
     'hero.version.available': 'available',
     'hero.title': '60 FPS on ESP32. ~100KB static RAM. Zero compromises.',
     'hero.subtitle': 'A modular C++17 engine with Godot-inspired scenes, camera effects, and scene transitions. Build for ESP32 hardware and simulate on PC for rapid testing.',
@@ -127,6 +127,12 @@ export const i18n = new I18nStore({
     'features.ui_toolkit.description': 'Smart layouts (Vertical, Horizontal, Grid, Anchor) with automatic positioning, scroll support, D-pad navigation, optional touchscreen support, and interactive components (Buttons, touch Sliders, Checkboxes, Labels, Panels).',
     'features.optimization.title': 'Memory Architecture',
     'features.optimization.description': 'Optional Dirty Regions pipeline (build flag) with static tilemap cache. Resolution Scaling (up to 72% framebuffer RAM savings). DMA pipelining. IRAM-cached rendering. Flash abstraction for PROGMEM. ~100KB static RAM on a measured ESP32 128×128 full build.',
+    'features.gameplay_framework.title': 'Gameplay Framework',
+    'features.gameplay_framework.description': 'GridSpace, StateMachine, ObjectPool, an event bus with interaction triggers, RoomGraph worlds, camera tweens, spatial queries and depth sorting — the building blocks every project used to hand-roll, each opt-in behind its own build flag.',
+    'features.ui_sprites.title': 'UI Sprite Elements',
+    'features.ui_sprites.description': 'UISprite and UISpriteRow render sprites (1/2/4 bpp) as first-class UI elements — icons, hearts, lives, keys, ammo — with setVisible(), layout placement and fixed positions, including half and quarter steps.',
+    'features.render_performance.title': 'Render Performance',
+    'features.render_performance.description': 'Deferred DMA wait overlaps SPI transfer with the next frame (frame cost = max(CPU, transfer)). 1bpp direct framebuffer path writes pixels ~10x faster, and opt-in 12-bit RGB444 wire format cuts 25% of SPI bandwidth.',
     
     // Showcase
     'showcase.title': 'One Codebase. Two Worlds.',
@@ -147,12 +153,12 @@ export const i18n = new I18nStore({
     'builtwith.subtitle': 'Reference implementations demonstrating engine capabilities. From basic sprites to advanced tilemap systems.',
     'builtwith.submit_question': 'Want to contribute a sample?',
     'builtwith.submit': 'Submit Your Project →',
-    'builtwith.spaceinvaders': 'Space Invaders',
-    'builtwith.spaceinvaders.description': '1bpp sprite reference. Demonstrates scenes, entities, rendering, input, audio, and collisions with NES palette.',
-    'builtwith.metroidvania': 'Metroidvania',
-    'builtwith.metroidvania.description': '4bpp tilemap reference with platformer physics, ladders, and dual palette mode.',
-    'builtwith.tictactoe': 'Tic-Tac-Toe',
-    'builtwith.tictactoe.description': 'Turn-based game reference with AI opponent and custom "Neon" color palette.',
+    'builtwith.bomberbot': 'Bomberbot',
+    'builtwith.bomberbot.description': 'Original bomberman-style game (all CC0 art): interpolated grid movement, seeded board generation, chain-reaction explosions, PRNG enemy AI, power-ups, HUD and audio.',
+    'builtwith.midway_clone': 'Midway Clone',
+    'builtwith.midway_clone.description': 'Vertically scrolling shooter with a per-frame driven camera and ObjectPool-backed bullets, enemies and explosions. Profiles where the ESP32 frame budget actually goes.',
+    'builtwith.legend_of_clone': 'Legend of Clone',
+    'builtwith.legend_of_clone.description': '8-bit-style screen-by-screen overworld and dungeon: two scenes over a shared room-graph, scrolling room transitions, flash-resident 4bpp tilemaps with static caching and dual palette.',
     'builtwith.by': 'by PixelRoot32 Team',
     'builtwith.view': 'View Project →',
     'builtwith.more_samples': 'View More Samples →',
@@ -210,7 +216,7 @@ export const i18n = new I18nStore({
     'tools.sprite_compiler.title': 'Sprite Compiler',
     'tools.sprite_compiler.description': 'Convert PNG sprite sheets into optimized C header files (.h) compatible with PixelRoot32. Supports layered sprites, multiple color depths (1bpp/2bpp/4bpp), and automatic palette detection.',
     'tools.tilemap_editor.title': 'Tilemap Editor',
-    'tools.tilemap_editor.description': 'Create multi-layer tile-based maps for PixelRoot32. Features: up to 8 render layers (engine MAX_LAYERS), tile attributes, animation support, and direct export to optimized C++ for ESP32 hardware.'
+    'tools.tilemap_editor.description': 'Create multi-layer tile-based maps for PixelRoot32. Features: up to 4 render layers (engine MAX_LAYERS), tile attributes, animation support, room-graph export for RoomGraph worlds, and direct export to optimized C++ for ESP32 hardware.'
   },
   es: {
     // Navigation
@@ -224,7 +230,7 @@ export const i18n = new I18nStore({
     'nav.language': 'Idioma',
     
     // Hero
-    'hero.version': 'v1.6.1 disponible', // This will be replaced dynamically
+    'hero.version': 'v1.8.0 disponible', // This will be replaced dynamically
     'hero.version.available': 'disponible',
     'hero.title': '60 FPS en ESP32. ~100KB RAM estática. Sin compromisos.',
     'hero.subtitle': 'Motor modular en C++17 con escenas estilo Godot, efectos de cámara y transiciones de escena. Desarrolla para ESP32 y simula en PC para testear rápidamente.',
@@ -259,6 +265,12 @@ export const i18n = new I18nStore({
     'features.ui_toolkit.description': 'Diseños inteligentes (Vertical, Horizontal, Grid, Anchor) con posicionamiento automático, soporte de scroll, navegación D-pad, soporte táctil opcional, y componentes interactivos (Botones, Sliders táctiles, Checkboxes, Etiquetas, Paneles).',
     'features.optimization.title': 'Arquitectura de Memoria',
     'features.optimization.description': 'Pipeline Dirty Regions opcional (flag de compilación) con caché estática de tilemaps. Resolution Scaling (hasta 72% de ahorro en RAM del framebuffer). Pipelining DMA. Rendering en caché IRAM. Abstracción Flash PROGMEM. ~100KB de RAM estática en un build ESP32 128×128 full medido.',
+    'features.gameplay_framework.title': 'Gameplay Framework',
+    'features.gameplay_framework.description': 'GridSpace, StateMachine, ObjectPool, bus de eventos con triggers de interacción, mundos RoomGraph, tweens de cámara, consultas espaciales y depth sorting — los bloques que todo proyecto armaba a mano, cada uno opt-in con su propio flag de build.',
+    'features.ui_sprites.title': 'Elementos UI de Sprites',
+    'features.ui_sprites.description': 'UISprite y UISpriteRow renderizan sprites (1/2/4 bpp) como elementos UI de primera clase — íconos, corazones, vidas, llaves, munición — con setVisible(), posicionamiento en layouts y posiciones fijas, incluyendo pasos de medio y cuarto.',
+    'features.render_performance.title': 'Rendimiento de Render',
+    'features.render_performance.description': 'DMA wait diferido solapa la transferencia SPI con el siguiente frame (coste = max(CPU, transfer)). La ruta directa de framebuffer 1bpp escribe píxeles ~10x más rápido, y el formato RGB444 de 12 bits opcional recorta 25% del ancho de banda SPI.',
     
     // Showcase
     'showcase.title': 'Un Código. <span class="text-secondary">Dos Mundos.</span>',
@@ -279,12 +291,12 @@ export const i18n = new I18nStore({
     'builtwith.subtitle': 'Implementaciones de referencia demostrando capacidades del motor. Desde sprites básicos hasta sistemas de tilemap avanzados.',
     'builtwith.submit_question': '¿Quieres contribuir con un ejemplo?',
     'builtwith.submit': 'Enviar Tu Proyecto →',
-    'builtwith.spaceinvaders': 'Space Invaders',
-    'builtwith.spaceinvaders.description': 'Referencia de sprites 1bpp. Demuestra escenas, entidades, renderizado, entrada, audio y colisiones con paleta NES.',
-    'builtwith.metroidvania': 'Metroidvania',
-    'builtwith.metroidvania.description': 'Referencia de tilemaps 4bpp con físicas de plataformas, escaleras y modo de paleta dual.',
-    'builtwith.tictactoe': 'Tres en Raya',
-    'builtwith.tictactoe.description': 'Referencia de juego por turnos con oponente IA y paleta de colores "Neon" personalizada.',
+    'builtwith.bomberbot': 'Bomberbot',
+    'builtwith.bomberbot.description': 'Juego original estilo Bomberman (todo el arte CC0): movimiento en grilla interpolado, generación de tablero con semilla, explosiones en cadena acotadas, IA enemiga PRNG, power-ups, HUD y audio.',
+    'builtwith.midway_clone': 'Midway Clone',
+    'builtwith.midway_clone.description': 'Shooter de scroll vertical con cámara guiada cada frame y balas, enemigos y explosiones respaldados por ObjectPool. Perfila a dónde va realmente el presupuesto de frame en ESP32.',
+    'builtwith.legend_of_clone': 'Legend of Clone',
+    'builtwith.legend_of_clone.description': 'Overworld y mazmorra pantalla a pantalla estilo 8-bit: dos escenas sobre un room-graph compartido, transiciones con scroll, tilemaps 4bpp en flash con caché estática y paleta dual.',
     'builtwith.by': 'por Equipo PixelRoot32',
     'builtwith.view': 'Ver Proyecto →',
     'builtwith.more_samples': 'Ver Más Ejemplos →',
@@ -343,6 +355,6 @@ export const i18n = new I18nStore({
     'tools.sprite_compiler.title': 'Compilador de Sprites',
     'tools.sprite_compiler.description': 'Convierte hojas de sprites PNG en archivos de cabecera C optimizados (.h) compatibles con PixelRoot32. Soporta sprites en capas, múltiples profundidades de color (1bpp/2bpp/4bpp) y detección automática de paletas.',
     'tools.tilemap_editor.title': 'Editor de Tilemaps',
-    'tools.tilemap_editor.description': 'Crea mapas basados en tiles multi-capa para PixelRoot32. Características: hasta 4 capas de render (MAX_LAYERS del engine), atributos de tiles, soporte de animación y exportación directa a C++ optimizado para hardware ESP32.'
+    'tools.tilemap_editor.description': 'Crea mapas basados en tiles multi-capa para PixelRoot32. Características: hasta 4 capas de render (MAX_LAYERS del engine), atributos de tiles, soporte de animación, exportación de room-graph para mundos RoomGraph y exportación directa a C++ optimizado para hardware ESP32.'
   }
 });
