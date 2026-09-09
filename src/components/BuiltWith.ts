@@ -39,7 +39,9 @@ const ACCENTS = {
 } as const;
 
 interface Project {
-  /** Directory name under `games/` in the demo projects repository. */
+  /** Top-level directory in the demo projects repository holding the demo. */
+  category: string;
+  /** Directory name under `category` in the demo projects repository. */
   slug: string;
   /** i18n key stem; expects `<stem>` and `<stem>.description` to exist. */
   key: string;
@@ -54,45 +56,51 @@ interface Project {
  */
 const PROJECTS: Project[] = [
   {
+    category: 'graphics',
+    slug: 'iso_dungeon',
+    key: 'builtwith.iso_dungeon',
+    image: '/build_with/iso_dungeon-game.webp',
+    alt: 'Iso Dungeon Demo',
+    accent: 'primary',
+  },
+  {
+    category: 'games',
     slug: 'top_down_city',
     key: 'builtwith.top_down_city',
     image: '/build_with/top_down_city-game.webp',
     alt: 'Top-Down City Game',
-    accent: 'primary',
+    accent: 'secondary',
   },
   {
+    category: 'games',
     slug: 'bomberbot',
     key: 'builtwith.bomberbot',
     image: '/build_with/bomberbot-game.webp',
     alt: 'Bomberbot Game',
-    accent: 'secondary',
+    accent: 'retro',
   },
   {
+    category: 'games',
     slug: 'legend_of_clone',
     key: 'builtwith.legend_of_clone',
     image: '/build_with/legend_of_clone-game.webp',
     alt: 'Legend of Clone Game',
-    accent: 'retro',
+    accent: 'primary',
   },
   {
+    category: 'games',
     slug: 'chess',
     key: 'builtwith.chess',
     image: '/build_with/chess-game.webp',
     alt: 'Chess Game',
-    accent: 'primary',
+    accent: 'secondary',
   },
   {
+    category: 'games',
     slug: 'space_invaders',
     key: 'builtwith.space_invaders',
     image: '/build_with/space_invaders-game.webp',
     alt: 'Space Invaders Game',
-    accent: 'secondary',
-  },
-  {
-    slug: 'midway_clone',
-    key: 'builtwith.midway_clone',
-    image: '/build_with/midway_clone-game.webp',
-    alt: 'Midway Clone Game',
     accent: 'retro',
   },
 ];
@@ -112,7 +120,7 @@ function projectCard(project: Project): string {
             <div class="mt-auto pt-4 flex items-center gap-2 text-xs text-text-muted">
               <span class="font-mono">${i18n.t('builtwith.by')}</span>
               <span>•</span>
-              <a href="${DEMOS_REPO_URL}/tree/main/games/${project.slug}" target="_blank" rel="noopener noreferrer" class="${accent.link} transition-colors font-mono">${i18n.t('builtwith.view')}</a>
+              <a href="${DEMOS_REPO_URL}/tree/main/${project.category}/${project.slug}" target="_blank" rel="noopener noreferrer" class="${accent.link} transition-colors font-mono">${i18n.t('builtwith.view')}</a>
             </div>
           </div>
         </div>
@@ -212,7 +220,7 @@ export function initBuiltWithImageModal(container: HTMLElement = document.body):
 
     modalBadge.className = `absolute bottom-4 right-4 z-10 px-2 py-1 text-[10px] font-bold ${accent.badgeSolid}`;
     modalLink.className = `font-mono transition-colors ${accent.link}`;
-    modalLink.href = `${DEMOS_REPO_URL}/tree/main/games/${project.slug}`;
+    modalLink.href = `${DEMOS_REPO_URL}/tree/main/${project.category}/${project.slug}`;
 
     modal.classList.remove('hidden');
     modal.classList.add('flex');
