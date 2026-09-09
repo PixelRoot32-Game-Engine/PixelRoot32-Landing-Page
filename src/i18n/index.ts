@@ -92,10 +92,10 @@ export const i18n = new I18nStore({
     'nav.language': 'Language',
     
     // Hero
-    'hero.version': 'v1.8.0 available',  // This will be replaced dynamically
+    'hero.version': 'v1.10.0 available',  // This will be replaced dynamically
     'hero.version.available': 'available',
     'hero.title': '60 FPS on ESP32. ~100KB static RAM. Zero compromises.',
-    'hero.subtitle': 'A modular C++17 engine with Godot-inspired scenes, camera effects, and scene transitions. Build for ESP32 hardware and simulate on PC for rapid testing.',
+    'hero.subtitle': 'A modular C++17 engine with Godot-inspired scenes, camera effects, and scene transitions — now rendering isometric and oblique worlds through the same path as orthogonal ones. Build for ESP32 hardware and simulate on PC for rapid testing.',
     'hero.cta.start': 'START BUILDING',
     'hero.cta.view': 'VIEW SOURCE',
     'hero.feature1.title': '01. ~100KB Static RAM',
@@ -114,7 +114,7 @@ export const i18n = new I18nStore({
     
     // Features
     'features.title': 'Technical Deep-Dive',
-    'features.subtitle': 'A modular toolkit designed for embedded game development on resource-constrained hardware.',
+    'features.subtitle': 'A modular toolkit for embedded game development on resource-constrained hardware. Orthogonal, isometric and oblique layouts are values of one projection type, each capability opt-in behind its own build flag.',
     'features.scene_system.title': 'Scene System',
     'features.scene_system.description': 'Godot-inspired hierarchy with scene stack management, Fade/Iris/Diagonal Wipe transitions, scene reuse lifecycle, camera effects (shake, punch, offset), and Actor types (Static, Kinematic, Rigid, Sensor) for intuitive game structure.',
     'features.multicore_audio.title': 'Multi-Core Audio',
@@ -123,16 +123,22 @@ export const i18n = new I18nStore({
     'features.physics.description': 'Flat Solver impulse-based physics with moving platforms, floor velocity inheritance, custom hitboxes, one-way platforms, Spatial Grid broadphase, CCD, and Baumgarte correction at a fixed 1/60s timestep.',
     'features.sprite_graphics.title': 'Sprite & Graphics',
     'features.sprite_graphics.description': '1bpp/2bpp/4bpp sprites with multi-layer support, multi-palette indexing, O(1) tile animations, native bitmap font (Font5x7), flip/rotation, and viewport culling for optimal performance.',
+    'features.projection.title': 'Cell-to-Screen Projection',
+    'features.projection.description': 'ProjectionSpec is an origin plus a 2×2 integer basis, so orthogonal, isometric 2:1, isometric 1:1 and oblique are values of one type instead of engine modes. cellToScreenX/Y never divide; screenToCellX/Y invert them for touch picking. A constexpr spec costs zero SRAM.',
+    'features.projected_tilemaps.title': 'Projected Tilemaps',
+    'features.projected_tilemaps.description': 'drawTileMap overloads for 1/2/4bpp draw a whole map through a projection, anchored by per-tile foot offsets so a sprite sits on its cell rather than its corner. CellRange culls by inverting the screen rect into cell space, and dirty marking follows the sprite extent, so overhanging tiles leave no stale pixels.',
+    'features.depth_keys.title': 'Projection-Aware Depth',
+    'features.depth_keys.description': 'Entity::depthKey with compareByDepthKey lets a game set paint order directly. Sorting by position.y + height holds only while screen depth tracks world Y — false under any non-identity projection, where two cells share a screen row at different world Ys. compareByBottomY stays correct for orthogonal games.',
     'features.ui_toolkit.title': 'UI Toolkit',
     'features.ui_toolkit.description': 'Smart layouts (Vertical, Horizontal, Grid, Anchor) with automatic positioning, scroll support, D-pad navigation, optional touchscreen support, and interactive components (Buttons, touch Sliders, Checkboxes, Labels, Panels).',
     'features.optimization.title': 'Memory Architecture',
-    'features.optimization.description': 'Optional Dirty Regions pipeline (build flag) with static tilemap cache. Resolution Scaling (up to 72% framebuffer RAM savings). DMA pipelining. IRAM-cached rendering. Flash abstraction for PROGMEM. ~100KB static RAM on a measured ESP32 128×128 full build.',
+    'features.optimization.description': 'Optional Dirty Regions pipeline (build flag) with static tilemap cache, plus StaticLayerSnapshot for layers the game draws itself (~57KB heap per scene, off by default). Resolution Scaling (up to 72% framebuffer RAM savings). DMA pipelining. IRAM-cached rendering. ~100KB static RAM on a measured ESP32 128×128 full build.',
     'features.gameplay_framework.title': 'Gameplay Framework',
-    'features.gameplay_framework.description': 'GridSpace, StateMachine, ObjectPool, an event bus with interaction triggers, RoomGraph worlds, camera tweens, spatial queries and depth sorting — the building blocks every project used to hand-roll, each opt-in behind its own build flag.',
+    'features.gameplay_framework.description': 'GridSpace, StateMachine, ObjectPool, an event bus with interaction triggers, RoomGraph worlds, camera tweens and spatial queries — the building blocks every project used to hand-roll, each opt-in behind its own build flag. GridMotion steps cell to cell under a projection too.',
     'features.ui_sprites.title': 'UI Sprite Elements',
     'features.ui_sprites.description': 'UISprite and UISpriteRow render sprites (1/2/4 bpp) as first-class UI elements — icons, hearts, lives, keys, ammo — with setVisible(), layout placement and fixed positions, including half and quarter steps.',
     'features.render_performance.title': 'Render Performance',
-    'features.render_performance.description': 'Deferred DMA wait overlaps SPI transfer with the next frame (frame cost = max(CPU, transfer)). 1bpp direct framebuffer path writes pixels ~10x faster, and opt-in 12-bit RGB444 wire format cuts 25% of SPI bandwidth.',
+    'features.render_performance.description': 'Deferred DMA wait overlaps SPI transfer with the next frame (frame cost = max(CPU, transfer)). 1bpp direct framebuffer path writes pixels ~10x faster, opt-in 12-bit RGB444 wire format cuts 25% of SPI bandwidth, and 4bpp/2bpp blits pack the palette once per sprite instead of once per pixel.',
     
     // Showcase
     'showcase.title': 'One Codebase. Two Worlds.',
@@ -236,10 +242,10 @@ export const i18n = new I18nStore({
     'nav.language': 'Idioma',
     
     // Hero
-    'hero.version': 'v1.8.0 disponible', // This will be replaced dynamically
+    'hero.version': 'v1.10.0 disponible', // This will be replaced dynamically
     'hero.version.available': 'disponible',
     'hero.title': '60 FPS en ESP32. ~100KB RAM estática. Sin compromisos.',
-    'hero.subtitle': 'Motor modular en C++17 con escenas estilo Godot, efectos de cámara y transiciones de escena. Desarrolla para ESP32 y simula en PC para testear rápidamente.',
+    'hero.subtitle': 'Motor modular en C++17 con escenas estilo Godot, efectos de cámara y transiciones de escena — ahora renderiza mundos isométricos y oblicuos por la misma ruta que los ortogonales. Desarrolla para ESP32 y simula en PC para testear rápidamente.',
     'hero.cta.start': 'EMPEZAR A CONSTRUIR',
     'hero.cta.view': 'VER CÓDIGO FUENTE',
     'hero.feature1.title': '01. ~100KB RAM Estática',
@@ -258,7 +264,7 @@ export const i18n = new I18nStore({
     
     // Features
     'features.title': 'Análisis Técnico',
-    'features.subtitle': 'Un toolkit modular diseñado para desarrollo de juegos embebidos en hardware con recursos limitados.',
+    'features.subtitle': 'Un toolkit modular para desarrollo de juegos embebidos en hardware con recursos limitados. Los layouts ortogonal, isométrico y oblicuo son valores de un mismo tipo de proyección, cada capacidad opt-in con su propio flag de build.',
     'features.scene_system.title': 'Sistema de Escenas',
     'features.scene_system.description': 'Jerarquía inspirada en Godot con pila de escenas, transiciones Fade/Iris/Diagonal Wipe, reutilización de escenas, efectos de cámara (shake, punch, offset) y tipos Actor (Static, Kinematic, Rigid, Sensor).',
     'features.multicore_audio.title': 'Audio Multi-Núcleo',
@@ -267,16 +273,22 @@ export const i18n = new I18nStore({
     'features.physics.description': 'Físicas Flat Solver con plataformas móviles, herencia de velocidad del suelo, hitboxes personalizados, plataformas unidireccionales, Cuadrícula Espacial, CCD y corrección Baumgarte a 1/60s.',
     'features.sprite_graphics.title': 'Sprites y Gráficos',
     'features.sprite_graphics.description': 'Sprites 1bpp/2bpp/4bpp multi-capa, indexación multi-paleta, animaciones de tiles O(1), fuente bitmap (Font5x7), flip/rotación y culling de viewport.',
+    'features.projection.title': 'Proyección Celda-Pantalla',
+    'features.projection.description': 'ProjectionSpec es un origen más una base entera de 2×2, así que ortogonal, isométrico 2:1, isométrico 1:1 y oblicuo son valores de un mismo tipo en vez de modos del motor. cellToScreenX/Y nunca dividen; screenToCellX/Y los invierten para picking táctil. Un spec constexpr no cuesta SRAM.',
+    'features.projected_tilemaps.title': 'Tilemaps Proyectados',
+    'features.projected_tilemaps.description': 'Sobrecargas de drawTileMap para 1/2/4bpp dibujan un mapa completo a través de una proyección, ancladas por offsets de base por tile para que el sprite se apoye en su celda y no en su esquina. CellRange descarta invirtiendo el rectángulo de pantalla a espacio de celdas, y el marcado dirty sigue la extensión del sprite, así un tile que sobresale no deja píxeles obsoletos.',
+    'features.depth_keys.title': 'Profundidad con Proyección',
+    'features.depth_keys.description': 'Entity::depthKey junto a compareByDepthKey permite fijar el orden de pintado directamente. Ordenar por position.y + height solo vale mientras la profundidad en pantalla siga a la Y del mundo — falso bajo cualquier proyección no identidad, donde dos celdas comparten fila de pantalla con Y de mundo distintas. compareByBottomY sigue siendo correcto en juegos ortogonales.',
     'features.ui_toolkit.title': 'Kit de UI',
     'features.ui_toolkit.description': 'Diseños inteligentes (Vertical, Horizontal, Grid, Anchor) con posicionamiento automático, soporte de scroll, navegación D-pad, soporte táctil opcional, y componentes interactivos (Botones, Sliders táctiles, Checkboxes, Etiquetas, Paneles).',
     'features.optimization.title': 'Arquitectura de Memoria',
-    'features.optimization.description': 'Pipeline Dirty Regions opcional (flag de compilación) con caché estática de tilemaps. Resolution Scaling (hasta 72% de ahorro en RAM del framebuffer). Pipelining DMA. Rendering en caché IRAM. Abstracción Flash PROGMEM. ~100KB de RAM estática en un build ESP32 128×128 full medido.',
+    'features.optimization.description': 'Pipeline Dirty Regions opcional (flag de compilación) con caché estática de tilemaps, más StaticLayerSnapshot para capas que dibuja el propio juego (~57KB de heap por escena, apagado por defecto). Resolution Scaling (hasta 72% de ahorro en RAM del framebuffer). Pipelining DMA. Rendering en caché IRAM. Abstracción Flash PROGMEM. ~100KB de RAM estática en un build ESP32 128×128 full medido.',
     'features.gameplay_framework.title': 'Gameplay Framework',
-    'features.gameplay_framework.description': 'GridSpace, StateMachine, ObjectPool, bus de eventos con triggers de interacción, mundos RoomGraph, tweens de cámara, consultas espaciales y depth sorting — los bloques que todo proyecto armaba a mano, cada uno opt-in con su propio flag de build.',
+    'features.gameplay_framework.description': 'GridSpace, StateMachine, ObjectPool, bus de eventos con triggers de interacción, mundos RoomGraph, tweens de cámara y consultas espaciales — los bloques que todo proyecto armaba a mano, cada uno opt-in con su propio flag de build. GridMotion también avanza celda a celda bajo una proyección.',
     'features.ui_sprites.title': 'Elementos UI de Sprites',
     'features.ui_sprites.description': 'UISprite y UISpriteRow renderizan sprites (1/2/4 bpp) como elementos UI de primera clase — íconos, corazones, vidas, llaves, munición — con setVisible(), posicionamiento en layouts y posiciones fijas, incluyendo pasos de medio y cuarto.',
     'features.render_performance.title': 'Rendimiento de Render',
-    'features.render_performance.description': 'DMA wait diferido solapa la transferencia SPI con el siguiente frame (coste = max(CPU, transfer)). La ruta directa de framebuffer 1bpp escribe píxeles ~10x más rápido, y el formato RGB444 de 12 bits opcional recorta 25% del ancho de banda SPI.',
+    'features.render_performance.description': 'DMA wait diferido solapa la transferencia SPI con el siguiente frame (coste = max(CPU, transfer)). La ruta directa de framebuffer 1bpp escribe píxeles ~10x más rápido, el formato RGB444 de 12 bits opcional recorta 25% del ancho de banda SPI, y los blits 4bpp/2bpp empaquetan la paleta una vez por sprite en lugar de una vez por píxel.',
     
     // Showcase
     'showcase.title': 'Un Código. <span class="text-secondary">Dos Mundos.</span>',

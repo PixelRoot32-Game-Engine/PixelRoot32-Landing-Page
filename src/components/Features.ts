@@ -46,7 +46,31 @@ export function Features(): string {
         icon: '<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3zM9 12h6M12 9v6"></path></svg>'
       })}
 
-      <!-- Feature 5: UI Sprite Elements -->
+      <!-- Feature 5: Cell-to-Screen Projection -->
+      ${Card({
+        title: i18n.t('features.projection.title'),
+        description: i18n.t('features.projection.description'),
+        variant: 'retro',
+        icon: '<svg class="w-6 h-6 text-retro" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3l9 5.25v7.5L12 21l-9-5.25v-7.5L12 3zM12 3v9m0 0l9-5.25M12 12L3 6.75"></path></svg>'
+      })}
+
+      <!-- Feature 6: Projected Tilemaps -->
+      ${Card({
+        title: i18n.t('features.projected_tilemaps.title'),
+        description: i18n.t('features.projected_tilemaps.description'),
+        variant: 'primary',
+        icon: '<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4l8 4-8 4-8-4 8-4zM4 12l8 4 8-4M4 16l8 4 8-4"></path></svg>'
+      })}
+
+      <!-- Feature 7: Projection-Aware Depth -->
+      ${Card({
+        title: i18n.t('features.depth_keys.title'),
+        description: i18n.t('features.depth_keys.description'),
+        variant: 'secondary',
+        icon: '<svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h10v6H4V6zM10 12h10v6H10v-6z"></path></svg>'
+      })}
+
+      <!-- Feature 8: UI Sprite Elements -->
       ${Card({
         title: i18n.t('features.ui_sprites.title'),
         description: i18n.t('features.ui_sprites.description'),
@@ -54,7 +78,7 @@ export function Features(): string {
         icon: '<svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>'
       })}
 
-      <!-- Feature 6: UI Toolkit -->
+      <!-- Feature 9: UI Toolkit -->
       ${Card({
         title: i18n.t('features.ui_toolkit.title'),
         description: i18n.t('features.ui_toolkit.description'),
@@ -62,7 +86,7 @@ export function Features(): string {
         icon: '<svg class="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>'
       })}
 
-      <!-- Feature 7: Hardware Optimization -->
+      <!-- Feature 10: Hardware Optimization -->
       ${Card({
         title: i18n.t('features.optimization.title'),
         description: i18n.t('features.optimization.description'),
@@ -70,7 +94,7 @@ export function Features(): string {
         icon: '<svg class="w-6 h-6 text-retro" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>'
       })}
 
-      <!-- Feature 8: Render Performance -->
+      <!-- Feature 11: Render Performance -->
       ${Card({
         title: i18n.t('features.render_performance.title'),
         description: i18n.t('features.render_performance.description'),
@@ -78,7 +102,7 @@ export function Features(): string {
         icon: '<svg class="w-6 h-6 text-retro" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>'
       })}
 
-      <!-- Feature 9: Multi-Core Audio -->
+      <!-- Feature 12: Multi-Core Audio -->
       ${Card({
         title: i18n.t('features.multicore_audio.title'),
         description: i18n.t('features.multicore_audio.description'),
