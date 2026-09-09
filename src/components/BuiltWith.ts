@@ -106,10 +106,10 @@ function projectCard(project: Project): string {
           <div class="absolute top-2 right-2 ${accent.badge} backdrop-blur-sm px-2 py-1 rounded border">
             <span class="text-[10px] font-mono font-bold ${accent.badgeText} uppercase">ESP32</span>
           </div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 bg-background/80 backdrop-blur-[2px]">
-            <h3 class="text-xl font-bold mb-2 ${accent.title} transition-colors">${i18n.t(project.key)}</h3>
-            <p class="text-sm text-text-muted mb-4">${i18n.t(`${project.key}.description`)}</p>
-            <div class="flex items-center gap-2 text-xs text-text-muted">
+          <div class="absolute bottom-0 left-0 right-0 h-44 p-6 flex flex-col overflow-hidden bg-background/80 backdrop-blur-[2px]">
+            <h3 class="text-xl font-bold mb-2 line-clamp-1 ${accent.title} transition-colors">${i18n.t(project.key)}</h3>
+            <p class="text-sm text-text-muted line-clamp-3">${i18n.t(`${project.key}.description`)}</p>
+            <div class="mt-auto pt-4 flex items-center gap-2 text-xs text-text-muted">
               <span class="font-mono">${i18n.t('builtwith.by')}</span>
               <span>•</span>
               <a href="${DEMOS_REPO_URL}/tree/main/games/${project.slug}" target="_blank" rel="noopener noreferrer" class="${accent.link} transition-colors font-mono">${i18n.t('builtwith.view')}</a>
