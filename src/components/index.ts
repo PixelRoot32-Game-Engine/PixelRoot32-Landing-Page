@@ -7,7 +7,7 @@ export { Hero } from './Hero';
 export { Features } from './Features';
 export { CodeBlock } from './CodeBlock';
 export { Showcase } from './Showcase';
-export { BuiltWith } from './BuiltWith';
+export { BuiltWith, initBuiltWithImageModal } from './BuiltWith';
 export { Tools, initToolsImageModal } from './Tools';
 export { WASMDemo } from './WASMDemo';
 export { CTA } from './CTA';

@@ -1,6 +1,6 @@
 import './style.css'
 import './utils/analytics'
-import { Navigation, initNavigation, Hero, Features, CodeBlock, Showcase, BuiltWith, CTA, Tools, Footer, initToolsImageModal, Platforms, ModularCompilation } from './components';
+import { Navigation, initNavigation, Hero, Features, CodeBlock, Showcase, BuiltWith, initBuiltWithImageModal, CTA, Tools, Footer, initToolsImageModal, Platforms, ModularCompilation } from './components';
 import { initLanguageSwitcher } from './components/LanguageSwitcher';
 import { initVersionDisplay } from './utils/version';
 import { i18n } from './i18n';
@@ -56,6 +56,9 @@ function renderApp(): void {
   
   // Initialize tools image modal
   initToolsImageModal(app);
+
+  // Initialize built-with project modal
+  initBuiltWithImageModal(app);
   
   // Initialize version display from GitHub
   initVersionDisplay(i18n, app);
