@@ -21,7 +21,9 @@ export function Features(): string {
       <p class="text-text-muted text-lg max-w-2xl mx-auto">${i18n.t('features.subtitle')}</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+    <!-- auto-rows-fr: grid rows size independently, so without it the row
+         holding the longest description stands taller than the other. -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr gap-6 mb-6">
       <!-- Feature 1: Isometric Projection -->
       ${Card({
         title: i18n.t('features.projection.title'),
