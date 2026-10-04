@@ -6,29 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://pixelroot32.org https://pixelroot32.com https://pixelroot32.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.github.com; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests;" />
     <title>PixelRoot32 | High-Performance 2D Engine for ESP32</title>
-    <meta name="description" content="PixelRoot32 v1.6.1 — high-performance 2D game engine for ESP32. Camera effects, scene transitions, 8-voice NES-style audio, Flat Solver physics, and modular C++17 architecture.">
-    <meta name="keywords" content="ESP32, Game Engine, 2D, Pixel Art, Retro Gaming, Microcontroller, C++, Embedded Systems">
+    <meta name="description" content="PixelRoot32 v1.12.0 — high-performance 2D game engine for ESP32. Camera effects, scene transitions, 8-voice NES-style audio, Flat Solver physics, and modular C++17 architecture.">
+    <meta name="theme-color" content="#000000" />
+    <meta name="author" content="PixelRoot32 Team" />
     <link rel="canonical" href="https://pixelroot32.org" />
     
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pixelroot32.org">
     <meta property="og:title" content="PixelRoot32 | High-Performance 2D Engine for ESP32">
-    <meta property="og:description" content="PixelRoot32 v1.6.1 — ESP32 2D game engine with camera effects, scene transitions, 8-voice audio, and Godot-inspired scene architecture.">
-    <meta property="og:image" content="https://pixelroot32.org/logo.png">
-    <meta property="og:image:secure_url" content="https://pixelroot32.org/logo.png">
+    <meta property="og:description" content="PixelRoot32 v1.12.0 — ESP32 2D game engine with camera effects, scene transitions, 8-voice audio, and Godot-inspired scene architecture.">
+    <meta property="og:image" content="https://pixelroot32.org/og-cover.png">
+    <meta property="og:image:secure_url" content="https://pixelroot32.org/og-cover.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="PixelRoot32">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
 
     <!-- Twitter / Telegram -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@pixelroot32">
     <meta name="twitter:url" content="https://pixelroot32.org">
     <meta name="twitter:title" content="PixelRoot32 | High-Performance 2D Engine for ESP32">
-    <meta name="twitter:description" content="PixelRoot32 v1.6.1 — camera effects, scene transitions, 8-voice audio, and modular 2D engine for ESP32.">
-    <meta name="twitter:image" content="https://pixelroot32.org/logo.png">
+    <meta name="twitter:description" content="PixelRoot32 v1.12.0 — camera effects, scene transitions, 8-voice audio, and modular 2D engine for ESP32.">
+    <meta name="twitter:image" content="https://pixelroot32.org/og-cover.png">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -76,13 +79,50 @@
       ]
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "PixelRoot32",
+      "applicationCategory": "GameEngine",
+      "operatingSystem": "ESP32",
+      "programmingLanguage": "C++17",
+      "softwareVersion": "1.12.0",
+      "url": "https://pixelroot32.org",
+      "downloadUrl": "https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   </head>
   <body class="bg-background text-text-high font-sans selection:bg-primary selection:text-text-high">
-    <!-- App container - Components will be rendered here by main.ts -->
-    <div id="app"></div>
+    <!-- Static SEO fallback: replaced by main.ts once JS loads, indexable without JS -->
+    <div id="app">
+      <header>
+        <nav>
+          <a href="https://pixelroot32.org">PixelRoot32</a>
+          <a href="https://docs.pixelroot32.org">Documentation</a>
+          <a href="https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine">GitHub</a>
+        </nav>
+      </header>
+      <main>
+        <h1>60 FPS on ESP32. ~100KB static RAM. Zero compromises.</h1>
+        <p>PixelRoot32 is a modular C++17 2D game engine for ESP32 with Godot-inspired scenes, camera effects, scene transitions, 8-voice NES-style audio, Flat Solver physics, and PC simulation for rapid testing.</p>
+        <p>
+          <a href="https://docs.pixelroot32.org">Start building</a>
+          <a href="https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine">View source</a>
+        </p>
+      </main>
+    </div>
+    <noscript>
+      <p>PixelRoot32 is a high-performance 2D game engine for ESP32. Enable JavaScript for the full experience, or read the <a href="https://docs.pixelroot32.org">documentation</a>.</p>
+    </noscript>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
