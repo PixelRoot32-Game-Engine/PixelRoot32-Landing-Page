@@ -92,7 +92,7 @@ export const i18n = new I18nStore({
     'nav.language': 'Language',
     
     // Hero
-    'hero.version': 'v1.10.0 available',  // This will be replaced dynamically
+    'hero.version': 'v1.12.0 available',  // This will be replaced dynamically
     'hero.version.available': 'available',
     'hero.title': '60 FPS on ESP32. ~100KB static RAM. Zero compromises.',
     'hero.subtitle': 'A modular C++17 engine with Godot-inspired scenes, camera effects, and scene transitions — now rendering isometric and oblique worlds through the same path as orthogonal ones. Build for ESP32 hardware and simulate on PC for rapid testing.',
@@ -121,7 +121,7 @@ export const i18n = new I18nStore({
     'features.multicore_audio.title': 'Multi-Core Audio',
     'features.multicore_audio.description': '8-voice dynamic synth (Pulse, Triangle, Sine, Saw, Noise) with pitch sweep, voice stealing, ADSR/LFO presets, looping SFX, and NES+ drums—pinned FreeRTOS audio task, sample-level envelopes, lock-free SPSC command queue, and non-linear mixer.',
     'features.physics.title': 'Flat Solver Physics',
-    'features.physics.description': 'Flat Solver impulse-based physics with moving platforms, floor velocity inheritance, custom hitboxes, one-way platforms, Spatial Grid broadphase, CCD, and Baumgarte correction at a fixed 1/60s timestep.',
+    'features.physics.description': 'Flat Solver impulse-based physics with moving platforms, floor velocity inheritance, custom hitboxes, one-way platforms, segment colliders (ramps, cushions), Spatial Grid broadphase, CCD, and Baumgarte correction at a fixed 1/60s timestep.',
     'features.projection.title': 'Isometric Projection',
     'features.projection.description': 'Orthogonal, isometric 2:1, isometric 1:1 and oblique are values of one ProjectionSpec — an origin plus a 2×2 integer basis — not engine modes. drawTileMap draws through it for every tile format, with foot anchors and cell-range culling, and depthKey sets paint order directly, since sorting by world Y breaks the moment two cells share a screen row. A constexpr spec costs zero SRAM.',
     'features.optimization.title': 'Memory Architecture',
@@ -231,7 +231,7 @@ export const i18n = new I18nStore({
     'nav.language': 'Idioma',
     
     // Hero
-    'hero.version': 'v1.10.0 disponible', // This will be replaced dynamically
+    'hero.version': 'v1.12.0 disponible', // This will be replaced dynamically
     'hero.version.available': 'disponible',
     'hero.title': '60 FPS en ESP32. ~100KB RAM estática. Sin compromisos.',
     'hero.subtitle': 'Motor modular en C++17 con escenas estilo Godot, efectos de cámara y transiciones de escena — ahora renderiza mundos isométricos y oblicuos por la misma ruta que los ortogonales. Desarrolla para ESP32 y simula en PC para testear rápidamente.',
@@ -260,7 +260,7 @@ export const i18n = new I18nStore({
     'features.multicore_audio.title': 'Audio Multi-Núcleo',
     'features.multicore_audio.description': 'Sintetizador dinámico de 8 voces (Pulse, Triangle, Sine, Saw, Noise) con pitch sweep, voice stealing, presets ADSR/LFO, SFX en loop y batería NES+—tarea FreeRTOS fijada a un núcleo, envolventes por muestra, cola SPSC sin bloqueos y mezclador no lineal.',
     'features.physics.title': 'Físicas Flat Solver',
-    'features.physics.description': 'Físicas Flat Solver con plataformas móviles, herencia de velocidad del suelo, hitboxes personalizados, plataformas unidireccionales, Cuadrícula Espacial, CCD y corrección Baumgarte a 1/60s.',
+    'features.physics.description': 'Físicas Flat Solver con plataformas móviles, herencia de velocidad del suelo, hitboxes personalizados, plataformas unidireccionales, colisionadores de segmento (rampas, bandas), Cuadrícula Espacial, CCD y corrección Baumgarte a 1/60s.',
     'features.projection.title': 'Proyección Isométrica',
     'features.projection.description': 'Ortogonal, isométrico 2:1, isométrico 1:1 y oblicuo son valores de un mismo ProjectionSpec — un origen más una base entera de 2×2 — no modos del motor. drawTileMap dibuja a través de él en todos los formatos de tile, con anclas de base y culling por rango de celdas, y depthKey fija el orden de pintado directamente, porque ordenar por Y de mundo se rompe apenas dos celdas comparten fila de pantalla. Un spec constexpr no cuesta SRAM.',
     'features.optimization.title': 'Arquitectura de Memoria',

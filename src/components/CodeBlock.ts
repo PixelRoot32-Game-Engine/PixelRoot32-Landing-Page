@@ -46,14 +46,14 @@ export function CodeBlock(): string {
             <span class="text-[10px] font-mono text-text-muted uppercase tracking-widest">platformio.ini</span>
           </div>
           <div class="p-6 font-mono text-sm overflow-x-auto leading-relaxed">
-            <pre class="text-text-high"><span class="text-text-muted">; PixelRoot32 v1.6.1</span>
+            <pre class="text-text-high"><span class="text-text-muted">; PixelRoot32 v1.12.0</span>
 build_unflags = -std=gnu++11
 build_flags =
     -std=gnu++17
     -fno-exceptions
 
 lib_deps =
-    gperez88/PixelRoot32-Game-Engine@^1.6.1</pre>
+    gperez88/PixelRoot32-Game-Engine@^1.12.0</pre>
           </div>
         </div>
 
