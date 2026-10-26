@@ -92,7 +92,7 @@ export const i18n = new I18nStore({
     'nav.language': 'Language',
     
     // Hero
-    'hero.version': 'v1.12.0 available',  // This will be replaced dynamically
+    'hero.version': 'v1.13.0 available',  // This will be replaced dynamically
     'hero.version.available': 'available',
     'hero.title': '60 FPS on ESP32. ~100KB static RAM. Zero compromises.',
     'hero.subtitle': 'A modular C++17 engine with Godot-inspired scenes, camera effects, and scene transitions — now rendering isometric and oblique worlds through the same path as orthogonal ones. Build for ESP32 hardware and simulate on PC for rapid testing.',
@@ -231,7 +231,7 @@ export const i18n = new I18nStore({
     'nav.language': 'Idioma',
     
     // Hero
-    'hero.version': 'v1.12.0 disponible', // This will be replaced dynamically
+    'hero.version': 'v1.13.0 disponible', // This will be replaced dynamically
     'hero.version.available': 'disponible',
     'hero.title': '60 FPS en ESP32. ~100KB RAM estática. Sin compromisos.',
     'hero.subtitle': 'Motor modular en C++17 con escenas estilo Godot, efectos de cámara y transiciones de escena — ahora renderiza mundos isométricos y oblicuos por la misma ruta que los ortogonales. Desarrolla para ESP32 y simula en PC para testear rápidamente.',
