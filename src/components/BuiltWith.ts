@@ -146,27 +146,32 @@ export function BuiltWith(): string {
     </div>
   </div>
 
-  <!-- Image Modal -->
-  <div id="builtwith-image-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-background/80 backdrop-blur-md p-4">
-    <button id="builtwith-image-modal-close" class="fixed top-4 right-4 z-[101] w-12 h-12 bg-surface border-2 border-border-ui hover:border-primary transition-all shadow-block flex items-center justify-center group">
+  <!-- Image Modal.
+       Full screen on purpose: the old centred dialog laid the description over
+       the screenshot and both ended up squeezed. Here the image gets the stage
+       and the copy gets a panel of its own; below the lg breakpoint they stack. -->
+  <div id="builtwith-image-modal" class="fixed inset-0 z-[100] hidden bg-background/95 backdrop-blur-md" role="dialog" aria-modal="true" aria-labelledby="builtwith-image-modal-title">
+    <button id="builtwith-image-modal-close" class="fixed top-4 right-4 z-[102] w-12 h-12 bg-surface border-2 border-border-ui hover:border-primary transition-all shadow-block flex items-center justify-center group">
       <svg class="w-6 h-6 text-text-muted group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </button>
-    <div class="inline-block max-w-[90vw] max-h-[90vh]">
-      <div class="bg-surface border-4 border-border-ui shadow-block overflow-hidden relative inline-block">
-        <img id="builtwith-image-modal-img" src="" alt="" class="block max-w-full max-h-[calc(90vh-200px)] object-contain" style="image-rendering: pixelated;" />
-        <div id="builtwith-image-modal-badge" class="absolute bottom-4 right-4 z-10 px-2 py-1 text-[10px] font-bold">ESP32</div>
-        <div class="absolute bottom-0 left-0 right-0 p-6 bg-background/90 backdrop-blur-[2px] z-10">
-          <h3 id="builtwith-image-modal-title" class="text-xl font-bold mb-2"></h3>
-          <p id="builtwith-image-modal-description" class="text-sm text-text-muted mb-4"></p>
-          <div class="flex items-center gap-2 text-xs text-text-muted">
-            <span class="font-mono">${i18n.t('builtwith.by')}</span>
-            <span>•</span>
-            <a id="builtwith-image-modal-link" href="#" target="_blank" rel="noopener noreferrer" class="font-mono transition-colors">${i18n.t('builtwith.view')}</a>
-          </div>
-        </div>
+
+    <div class="h-full w-full flex flex-col lg:flex-row">
+      <div id="builtwith-image-stage" class="flex-1 min-h-0 flex items-center justify-center p-4 lg:p-10">
+        <img id="builtwith-image-modal-img" src="" alt="" class="block h-full w-full object-contain" style="image-rendering: pixelated;" />
       </div>
+
+      <aside class="shrink-0 w-full lg:w-[380px] xl:w-[440px] max-h-[45vh] lg:max-h-none overflow-y-auto bg-surface border-t-2 lg:border-t-0 lg:border-l-2 border-border-ui p-6 lg:p-8">
+        <span id="builtwith-image-modal-badge" class="inline-block px-2 py-1 text-[10px] font-bold mb-4">ESP32</span>
+        <h3 id="builtwith-image-modal-title" class="text-2xl font-bold mb-3"></h3>
+        <p id="builtwith-image-modal-description" class="text-sm text-text-muted mb-6"></p>
+        <div class="flex items-center gap-2 text-xs text-text-muted">
+          <span class="font-mono">${i18n.t('builtwith.by')}</span>
+          <span>•</span>
+          <a id="builtwith-image-modal-link" href="#" target="_blank" rel="noopener noreferrer" class="font-mono transition-colors">${i18n.t('builtwith.view')}</a>
+        </div>
+      </aside>
     </div>
   </div>
 </section>`;
@@ -207,6 +212,7 @@ export function initBuiltWithImageModal(container: HTMLElement = document.body):
   const modalLink = modal.querySelector<HTMLAnchorElement>('#builtwith-image-modal-link');
   const modalBadge = modal.querySelector<HTMLElement>('#builtwith-image-modal-badge');
   const closeBtn = modal.querySelector<HTMLElement>('#builtwith-image-modal-close');
+  const stage = modal.querySelector<HTMLElement>('#builtwith-image-stage');
 
   if (!modalImg || !modalTitle || !modalDescription || !modalLink || !modalBadge || !closeBtn) return;
 
@@ -218,19 +224,17 @@ export function initBuiltWithImageModal(container: HTMLElement = document.body):
     modalTitle.textContent = i18n.t(project.key);
     modalDescription.textContent = i18n.t(`${project.key}.description`);
 
-    modalBadge.className = `absolute bottom-4 right-4 z-10 px-2 py-1 text-[10px] font-bold ${accent.badgeSolid}`;
+    modalBadge.className = `inline-block px-2 py-1 text-[10px] font-bold mb-4 ${accent.badgeSolid}`;
     modalLink.className = `font-mono transition-colors ${accent.link}`;
     modalLink.href = `${DEMOS_REPO_URL}/tree/main/${project.category}/${project.slug}`;
 
     modal.classList.remove('hidden');
-    modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
     closeBtn.focus();
   };
 
   const closeModal = (): void => {
     modal.classList.add('hidden');
-    modal.classList.remove('flex');
     document.body.style.overflow = '';
   };
 
@@ -260,6 +264,11 @@ export function initBuiltWithImageModal(container: HTMLElement = document.body):
   });
 
   closeBtn.addEventListener('click', closeModal, { signal });
+  // The stage is the empty area around the image: clicking it dismisses, but a
+  // click on the image itself must not.
+  stage?.addEventListener('click', (event) => {
+    if (event.target === stage) closeModal();
+  }, { signal });
   modal.addEventListener('click', (event) => {
     if (event.target === modal) closeModal();
   }, { signal });
