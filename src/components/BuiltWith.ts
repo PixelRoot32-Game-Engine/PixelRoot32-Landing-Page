@@ -72,11 +72,11 @@ const PROJECTS: Project[] = [
     accent: 'secondary',
   },
   {
-    category: 'games',
-    slug: 'bomberbot',
-    key: 'builtwith.bomberbot',
-    image: '/build_with/bomberbot-game.webp',
-    alt: 'Bomberbot Game',
+    category: 'audio',
+    slug: 'music_sequencer',
+    key: 'builtwith.music_sequencer',
+    image: '/build_with/music_sequencer-game.webp',
+    alt: 'Music Sequencer Demo',
     accent: 'retro',
   },
   {
