@@ -92,7 +92,7 @@ export const i18n = new I18nStore({
     'nav.language': 'Language',
     
     // Hero
-    'hero.version': 'v1.13.0 available',  // This will be replaced dynamically
+    'hero.version': 'v1.14.0 available',  // This will be replaced dynamically
     'hero.version.available': 'available',
     'hero.title': '60 FPS on ESP32. ~100KB static RAM. Zero compromises.',
     'hero.subtitle': 'A modular C++17 engine with Godot-inspired scenes, camera effects, and scene transitions — now rendering isometric and oblique worlds through the same path as orthogonal ones. Build for ESP32 hardware and simulate on PC for rapid testing.',
@@ -113,21 +113,24 @@ export const i18n = new I18nStore({
     'code.feature3': 'Platform-agnostic drivers with automatic FPU/Fixed16 selection',
     
     // Features
-    'features.title': 'Technical Deep-Dive',
+    // Headline and subtitle carry the two claims that disqualify other engines
+    // first: the memory floor and the opt-in default. The cards then only need
+    // to defend those claims with specifics.
+    'features.title': 'A complete 2D engine in ~100 KB of RAM.',
     'features.more': 'Full feature reference →',
-    'features.subtitle': 'A modular toolkit for embedded game development on resource-constrained hardware. Orthogonal, isometric and oblique layouts are values of one projection type, each capability opt-in behind its own build flag.',
-    'features.scene_system.title': 'Scene System',
-    'features.scene_system.description': 'Godot-inspired hierarchy with scene stack management, Fade/Iris/Diagonal Wipe transitions, scene reuse lifecycle, camera effects (shake, punch, offset), and Actor types (Static, Kinematic, Rigid, Sensor) for intuitive game structure.',
-    'features.multicore_audio.title': 'Multi-Core Audio',
-    'features.multicore_audio.description': '8-voice dynamic synth (Pulse, Triangle, Sine, Saw, Noise) with pitch sweep, voice stealing, ADSR/LFO presets, looping SFX, and NES+ drums—pinned FreeRTOS audio task, sample-level envelopes, lock-free SPSC command queue, and non-linear mixer.',
-    'features.physics.title': 'Flat Solver Physics',
-    'features.physics.description': 'Flat Solver impulse-based physics with moving platforms, floor velocity inheritance, custom hitboxes, one-way platforms, segment colliders (ramps, cushions), Spatial Grid broadphase, CCD, and Baumgarte correction at a fixed 1/60s timestep.',
-    'features.projection.title': 'Isometric Projection',
-    'features.projection.description': 'Orthogonal, isometric 2:1, isometric 1:1 and oblique are values of one ProjectionSpec — an origin plus a 2×2 integer basis — not engine modes. drawTileMap draws through it for every tile format, with foot anchors and cell-range culling, and depthKey sets paint order directly, since sorting by world Y breaks the moment two cells share a screen row. A constexpr spec costs zero SRAM.',
-    'features.optimization.title': 'Memory Architecture',
-    'features.optimization.description': 'Optional Dirty Regions pipeline (build flag) with static tilemap cache, plus StaticLayerSnapshot for layers the game draws itself (~57KB heap per scene, off by default). Resolution Scaling (up to 72% framebuffer RAM savings). DMA pipelining. IRAM-cached rendering. ~100KB static RAM on a measured ESP32 128×128 full build.',
-    'features.render_performance.title': 'Render Performance',
-    'features.render_performance.description': 'Deferred DMA wait overlaps SPI transfer with the next frame (frame cost = max(CPU, transfer)). 1bpp direct framebuffer path writes pixels ~10x faster, opt-in 12-bit RGB444 wire format cuts 25% of SPI bandwidth, and 4bpp/2bpp blits pack the palette once per sprite instead of once per pixel.',
+    'features.subtitle': 'PixelRoot32 targets the ESP32 you already own: no PSRAM, no external RAM, and no emulator between your code and the panel. Persistence, ESP-NOW networking, dialogs and the gameplay framework are opt-in behind PIXELROOT32_ENABLE_* flags that default to 0 and contribute no symbols when off.',
+    'features.memory.title': 'No PSRAM Required',
+    'features.memory.description': 'A measured 128×128 build with every subsystem linked takes about 100 KB of RAM; compiling audio, physics, UI and particles out drops it to about 80 KB, and the 128×128 preset on its own takes ~72% off the framebuffer. On FPU-less parts (ESP32-C3, C2, S2 and C6) Scalar becomes Fixed16 instead of float, so the same game code builds for the cheapest chips. External PSRAM is not required, and Dirty Regions and static tilemap caches are opt-in.',
+    'features.native.title': 'Prototype Without Flashing',
+    'features.native.description': 'The same game code builds as a native SDL2 application with pio run -e native; only the display and input drivers are platform-specific. You iterate with a real debugger and threads, test saves against host files, then flash the same scenes to the board. Audio switches to the SDL2 backend automatically, and the APU runs the same sequencing math on both targets.',
+    'features.audio.title': 'Audio That Keeps Time',
+    'features.audio.description': 'Eight dynamically pooled voices — Pulse, Triangle, Sine, Saw and Noise — split into a fixed 4+4 partition for music against percussion and SFX. The sequencer runs on sample time inside the APU, commands cross a lock-free 64-slot SPSC queue, and the render block is 512 samples on FPU targets or 1024 without one: 23.2 ms and 46.4 ms of latency at 22 050 Hz. Legacy, Nes and Hybrid profiles change the character on the same material.',
+    'features.physics.title': 'Physics Built for Platformers',
+    'features.physics.description': 'The Flat Solver steps at a fixed 1/60 s with Godot-style Kinematic and Rigid actors, one-way platforms, moving platforms whose velocity the character inherits, custom hitboxes and arbitrary-angle segment colliders for ramps and cushions. A uniform-grid broadphase, CCD for fast circles and Baumgarte correction keep stacks and slopes stable.',
+    'features.persistence.title': 'Saves That Survive a Reboot',
+    'features.persistence.description': 'An optional module (PIXELROOT32_ENABLE_PERSISTENCE, default off) separates storage models from media: named key-value settings and numbered save slots behind one contract. Every call returns a typed StoreResult, every read takes a capacity and never writes past it, and each record carries a 16-byte CRC-32 envelope with a schema version. NVS, host-file and in-memory adapters ship, and the service itself costs 16 bytes of static RAM.',
+    'features.networking.title': 'Multiplayer Without a Router',
+    'features.networking.description': 'ESP-NOW gives two or more boards a peer-to-peer link with no access point: broadcast discovery, a fixed peer table, and per-message ACK, bounded retry and a 64-bit duplicate window. A Scene event hook drains from the update loop, NetCounter converges idempotent state across a reboot, and a native loopback transport injects loss, duplication and reordering so the module is testable without hardware. Opt-in behind PIXELROOT32_ENABLE_NETWORKING, default 0.',
     
     // Showcase
     'showcase.title': 'One Codebase. Two Worlds.',
@@ -195,6 +198,10 @@ export const i18n = new I18nStore({
     'modular.particles': 'Particles',
     'modular.all': 'ALL DISABLED',
     'modular.all_flags': 'All flags set to 0',
+    'modular.also.title': 'Also opt-in, on the same rule',
+    'modular.also.networking': '~2 KB of module static RAM, with a 2.5 KB hard gate the types are asserted against; the IDF Wi-Fi and ESP-NOW stacks are excluded from that figure',
+    'modular.also.persistence': '16 B for the service and 24 B per NVS key-value store, plus the record headers the game chooses',
+    'modular.also.note': 'These two shipped after the A/B bench behind the table, which measures the four subsystems above on esp32dev at 128×128. Their figures come from the type budget of each module instead of being folded into those deltas. The dialog system and the gameplay framework follow the same default-off rule.',
     'modular.benefit1.title': '~100KB Static Footprint',
     'modular.benefit1.description': 'On a measured ESP32 128×128 build with all subsystems linked, static RAM is about 100KB—leaving headroom for assets and heap (audio scheduler adds ~13KB when enabled).',
     'modular.benefit2.title': 'Zero-Overhead When Disabled',
@@ -231,7 +238,7 @@ export const i18n = new I18nStore({
     'nav.language': 'Idioma',
     
     // Hero
-    'hero.version': 'v1.13.0 disponible', // This will be replaced dynamically
+    'hero.version': 'v1.14.0 disponible', // This will be replaced dynamically
     'hero.version.available': 'disponible',
     'hero.title': '60 FPS en ESP32. ~100KB RAM estática. Sin compromisos.',
     'hero.subtitle': 'Motor modular en C++17 con escenas estilo Godot, efectos de cámara y transiciones de escena — ahora renderiza mundos isométricos y oblicuos por la misma ruta que los ortogonales. Desarrolla para ESP32 y simula en PC para testear rápidamente.',
@@ -252,21 +259,24 @@ export const i18n = new I18nStore({
     'code.feature3': 'Drivers agnósticos de plataforma con selección automática FPU/Fixed16',
     
     // Features
-    'features.title': 'Análisis Técnico',
-    'features.more': 'Referencia completa de features →',
-    'features.subtitle': 'Un toolkit modular para desarrollo de juegos embebidos en hardware con recursos limitados. Los layouts ortogonal, isométrico y oblicuo son valores de un mismo tipo de proyección, cada capacidad opt-in con su propio flag de build.',
-    'features.scene_system.title': 'Sistema de Escenas',
-    'features.scene_system.description': 'Jerarquía inspirada en Godot con pila de escenas, transiciones Fade/Iris/Diagonal Wipe, reutilización de escenas, efectos de cámara (shake, punch, offset) y tipos Actor (Static, Kinematic, Rigid, Sensor).',
-    'features.multicore_audio.title': 'Audio Multi-Núcleo',
-    'features.multicore_audio.description': 'Sintetizador dinámico de 8 voces (Pulse, Triangle, Sine, Saw, Noise) con pitch sweep, voice stealing, presets ADSR/LFO, SFX en loop y batería NES+—tarea FreeRTOS fijada a un núcleo, envolventes por muestra, cola SPSC sin bloqueos y mezclador no lineal.',
-    'features.physics.title': 'Físicas Flat Solver',
-    'features.physics.description': 'Físicas Flat Solver con plataformas móviles, herencia de velocidad del suelo, hitboxes personalizados, plataformas unidireccionales, colisionadores de segmento (rampas, bandas), Cuadrícula Espacial, CCD y corrección Baumgarte a 1/60s.',
-    'features.projection.title': 'Proyección Isométrica',
-    'features.projection.description': 'Ortogonal, isométrico 2:1, isométrico 1:1 y oblicuo son valores de un mismo ProjectionSpec — un origen más una base entera de 2×2 — no modos del motor. drawTileMap dibuja a través de él en todos los formatos de tile, con anclas de base y culling por rango de celdas, y depthKey fija el orden de pintado directamente, porque ordenar por Y de mundo se rompe apenas dos celdas comparten fila de pantalla. Un spec constexpr no cuesta SRAM.',
-    'features.optimization.title': 'Arquitectura de Memoria',
-    'features.optimization.description': 'Pipeline Dirty Regions opcional (flag de compilación) con caché estática de tilemaps, más StaticLayerSnapshot para capas que dibuja el propio juego (~57KB de heap por escena, apagado por defecto). Resolution Scaling (hasta 72% de ahorro en RAM del framebuffer). Pipelining DMA. Rendering en caché IRAM. Abstracción Flash PROGMEM. ~100KB de RAM estática en un build ESP32 128×128 full medido.',
-    'features.render_performance.title': 'Rendimiento de Render',
-    'features.render_performance.description': 'DMA wait diferido solapa la transferencia SPI con el siguiente frame (coste = max(CPU, transfer)). La ruta directa de framebuffer 1bpp escribe píxeles ~10x más rápido, el formato RGB444 de 12 bits opcional recorta 25% del ancho de banda SPI, y los blits 4bpp/2bpp empaquetan la paleta una vez por sprite en lugar de una vez por píxel.',
+    // El titular y el subtítulo llevan primero las dos afirmaciones que
+    // descartan a otros motores: el suelo de memoria y el opt-in por defecto.
+    // Las tarjetas solo tienen que defenderlas con datos concretos.
+    'features.title': 'Un motor 2D completo en ~100 KB de RAM.',
+    'features.more': 'Referencia completa de capacidades →',
+    'features.subtitle': 'PixelRoot32 apunta al ESP32 que ya tienes: sin PSRAM, sin RAM externa y sin emulador entre tu código y la pantalla. Persistencia, red ESP-NOW, diálogos y el framework de gameplay son opcionales tras flags PIXELROOT32_ENABLE_* que vienen en 0 y no aportan símbolos cuando están apagados.',
+    'features.memory.title': 'Sin necesidad de PSRAM',
+    'features.memory.description': 'Una compilación medida de 128×128 con todos los subsistemas enlazados ocupa unos 100 KB de RAM; al compilar fuera audio, físicas, UI y partículas baja a unos 80 KB, y el preset de 128×128 por sí solo recorta cerca del 72% del framebuffer. En chips sin FPU (ESP32-C3, C2, S2 y C6) Scalar pasa a Fixed16 en vez de float, así que el mismo código compila para las placas más baratas. La PSRAM externa no hace falta, y Dirty Regions y las cachés estáticas de tilemap son opcionales.',
+    'features.native.title': 'Prototipa sin flashear',
+    'features.native.description': 'El mismo código de juego compila como aplicación nativa SDL2 con pio run -e native; solo los drivers de pantalla y entrada son específicos de cada plataforma. Iteras con depurador e hilos reales, pruebas las partidas contra archivos del host y después flasheas las mismas escenas a la placa. El audio pasa solo al backend SDL2, y el APU ejecuta la misma lógica de secuenciación en ambos destinos.',
+    'features.audio.title': 'Audio que no pierde el tempo',
+    'features.audio.description': 'Ocho voces asignadas dinámicamente — Pulse, Triangle, Sine, Saw y Noise — repartidas en una partición fija 4+4 entre música y percusión/SFX. El secuenciador corre en tiempo de muestra dentro del APU, los comandos cruzan una cola SPSC de 64 ranuras sin bloqueos, y el bloque de render es de 512 muestras en destinos con FPU o de 1024 sin ella: 23,2 ms y 46,4 ms de latencia a 22 050 Hz. Los perfiles Legacy, Nes e Hybrid cambian el carácter sobre el mismo material.',
+    'features.physics.title': 'Físicas hechas para plataformas',
+    'features.physics.description': 'El Flat Solver avanza en pasos fijos de 1/60 s con actores Kinematic y Rigid al estilo Godot, plataformas unidireccionales, plataformas móviles cuya velocidad hereda el personaje, hitboxes personalizados y colisionadores de segmento en cualquier ángulo para rampas y bandas. Una broadphase de cuadrícula uniforme, CCD para círculos rápidos y corrección de Baumgarte mantienen estables las pilas y las cuestas.',
+    'features.persistence.title': 'Partidas que sobreviven al reinicio',
+    'features.persistence.description': 'Un módulo opcional (PIXELROOT32_ENABLE_PERSISTENCE, apagado por defecto) separa los modelos de almacenamiento del medio físico: ajustes clave-valor con nombre y ranuras de guardado numeradas bajo un mismo contrato. Cada llamada devuelve un StoreResult tipado, cada lectura recibe una capacidad y nunca escribe más allá, y cada registro lleva una envoltura de 16 bytes con CRC-32 y versión de esquema. Se incluyen adaptadores NVS, de archivo en host y en memoria, y el servicio ocupa 16 bytes de RAM estática.',
+    'features.networking.title': 'Multijugador sin router',
+    'features.networking.description': 'ESP-NOW conecta dos o más placas entre iguales sin punto de acceso: descubrimiento por broadcast, tabla de pares fija y, por mensaje, ACK, reintento acotado y una ventana de duplicados de 64 bits. Un hook de eventos de escena se drena en el update, NetCounter demuestra el modelo de convergencia —operaciones idempotentes y resincronización por snapshot tras un reinicio— y un transporte loopback nativo inyecta pérdidas, duplicados y reordenamientos para probar el módulo sin hardware. Opt-in tras PIXELROOT32_ENABLE_NETWORKING, en 0 por defecto.',
     
     // Showcase
     'showcase.title': 'Un Código. <span class="text-secondary">Dos Mundos.</span>',
@@ -335,6 +345,10 @@ export const i18n = new I18nStore({
     'modular.particles': 'Partículas',
     'modular.all': 'TODOS DESACTIVADOS',
     'modular.all_flags': 'Todos los flags en 0',
+    'modular.also.title': 'También opcionales, con la misma regla',
+    'modular.also.networking': '~2 KB de RAM estática del módulo, con un tope duro de 2,5 KB contra el que se verifican los tipos; no incluye las pilas Wi-Fi y ESP-NOW del IDF',
+    'modular.also.persistence': '16 B para el servicio y 24 B por almacén clave-valor NVS, más las cabeceras de registro que elija el juego',
+    'modular.also.note': 'Estos dos llegaron después del banco A/B que sostiene la tabla, que mide los cuatro subsistemas de arriba en esp32dev a 128×128. Sus cifras vienen del presupuesto de tipos de cada módulo en lugar de sumarse a esos deltas. El sistema de diálogo y el framework de gameplay siguen la misma regla, apagados por defecto.',
     'modular.benefit1.title': '~100KB de Huella Estática',
     'modular.benefit1.description': 'En un build ESP32 128×128 medido con todos los subsistemas enlazados, la RAM estática es ~100KB—queda margen para assets y heap (el scheduler de audio suma ~13KB cuando está activo).',
     'modular.benefit2.title': 'Sin Sobrecarga Cuando Está Desactivado',

@@ -80,6 +80,26 @@ export function ModularCompilation(): string {
         </div>
       </div>
     </div>
+
+    <!-- The A/B bench behind the table covers only the four subsystems it was
+         built for. Networking (1.13.0) and persistence (1.14.0) are opt-in on
+         the same rule but are not in that measurement, so their cost comes from
+         each module's own type budget and is stated as such instead of being
+         mixed into the delta columns. -->
+    <div class="mt-12 bg-background border-2 border-border-ui p-6 shadow-block">
+      <h3 class="text-sm font-black uppercase tracking-wider text-retro mb-4">${i18n.t('modular.also.title')}</h3>
+      <ul class="space-y-4 text-sm">
+        <li class="space-y-1">
+          <span class="block font-mono text-text-high">PIXELROOT32_ENABLE_NETWORKING</span>
+          <span class="block text-text-muted">${i18n.t('modular.also.networking')}</span>
+        </li>
+        <li class="space-y-1">
+          <span class="block font-mono text-text-high">PIXELROOT32_ENABLE_PERSISTENCE</span>
+          <span class="block text-text-muted">${i18n.t('modular.also.persistence')}</span>
+        </li>
+      </ul>
+      <p class="mt-4 text-text-muted text-xs leading-relaxed">${i18n.t('modular.also.note')}</p>
+    </div>
   </div>
 </section>`;
 }
