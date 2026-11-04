@@ -67,30 +67,33 @@ export function Tools(): string {
     </div>
   </div>
 
-  <!-- Image Modal -->
-  <div id="tool-image-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-background/95 backdrop-blur-md p-4">
-    <button id="tool-image-modal-close" class="fixed top-4 right-4 z-[101] w-12 h-12 bg-surface border-2 border-border-ui hover:border-primary transition-all shadow-block flex items-center justify-center group">
+  <!-- Image Modal: same full-screen split as the sample viewer, so the copy
+       never sits on top of the screenshot. -->
+  <div id="tool-image-modal" class="fixed inset-0 z-[100] hidden bg-background/95 backdrop-blur-md" role="dialog" aria-modal="true" aria-labelledby="tool-image-modal-title">
+    <button id="tool-image-modal-close" class="fixed top-4 right-4 z-[102] w-12 h-12 bg-surface border-2 border-border-ui hover:border-primary transition-all shadow-block flex items-center justify-center group">
       <svg class="w-6 h-6 text-text-muted group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </button>
-    <div class="inline-block max-w-[90vw] max-h-[90vh]">
-      <div class="bg-surface border-4 border-border-ui shadow-block overflow-hidden relative inline-block">
-        <img id="tool-image-modal-img" src="" alt="" class="block max-w-full max-h-[calc(90vh-200px)] object-contain" style="object-position: top left;" />
-        <div id="tool-image-modal-badge" class="absolute bottom-4 right-4 z-10 px-2 py-1 text-[10px] font-bold">
-          <span id="tool-image-modal-badge-text"></span>
-        </div>
-        <div class="absolute bottom-0 left-0 right-0 p-6 bg-background/90 backdrop-blur-[2px] z-10">
-          <h3 id="tool-image-modal-title" class="text-xl font-bold mb-2"></h3>
-          <p id="tool-image-modal-description" class="text-sm text-text-muted mb-4"></p>
-          <div class="flex items-center gap-2 text-xs text-text-muted">
-            <span class="font-mono">${i18n.t('tools.by')}</span>
-            <span>•</span>
-            <span id="tool-image-modal-link-text" class="font-mono"></span>
-            <a id="tool-image-modal-link" href="#" target="_blank" class="font-mono transition-colors hidden"></a>
-          </div>
-        </div>
+
+    <div class="h-full w-full flex flex-col lg:flex-row">
+      <div id="tool-image-stage" class="flex-1 min-h-0 flex items-center justify-center p-4 lg:p-10">
+        <img id="tool-image-modal-img" src="" alt="" class="block h-full w-full object-contain" />
       </div>
+
+      <aside class="shrink-0 w-full lg:w-[380px] xl:w-[440px] max-h-[45vh] lg:max-h-none overflow-y-auto bg-surface border-t-2 lg:border-t-0 lg:border-l-2 border-border-ui p-6 lg:p-8">
+        <span id="tool-image-modal-badge" class="inline-block px-2 py-1 text-[10px] font-bold mb-4">
+          <span id="tool-image-modal-badge-text"></span>
+        </span>
+        <h3 id="tool-image-modal-title" class="text-2xl font-bold mb-3"></h3>
+        <p id="tool-image-modal-description" class="text-sm text-text-muted mb-6"></p>
+        <div class="flex items-center gap-2 text-xs text-text-muted">
+          <span class="font-mono">${i18n.t('tools.by')}</span>
+          <span>•</span>
+          <span id="tool-image-modal-link-text" class="font-mono"></span>
+          <a id="tool-image-modal-link" href="#" target="_blank" class="font-mono transition-colors hidden"></a>
+        </div>
+      </aside>
     </div>
   </div>
 </section>`;
@@ -164,9 +167,9 @@ export function initToolsImageModal(container: HTMLElement = document.body): voi
     modalBadgeText.textContent = tool.badge;
     
     // Update badge colors
-    modalBadge.className = 'absolute bottom-4 right-4 z-10 px-2 py-1 text-[10px] font-bold';
+    modalBadge.className = 'inline-block px-2 py-1 text-[10px] font-bold mb-4';
     modalBadgeText.className = '';
-    modalTitle.className = 'text-xl font-bold mb-2';
+    modalTitle.className = 'text-2xl font-bold mb-3';
     modalLink.className = 'font-mono transition-colors hover:text-primary';
     
     // Show link
@@ -192,13 +195,11 @@ export function initToolsImageModal(container: HTMLElement = document.body): voi
       document.body.appendChild(modal);
     }
     modal.classList.remove('hidden');
-    modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
   };
 
   const closeModal = (): void => {
     modal.classList.add('hidden');
-    modal.classList.remove('flex');
     document.body.style.overflow = '';
   };
 
@@ -215,6 +216,10 @@ export function initToolsImageModal(container: HTMLElement = document.body): voi
 
   // Close modal handlers
   closeBtn.addEventListener('click', closeModal);
+  const stage = modal.querySelector('#tool-image-stage') as HTMLElement | null;
+  stage?.addEventListener('click', (e) => {
+    if (e.target === stage) closeModal();
+  });
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       closeModal();

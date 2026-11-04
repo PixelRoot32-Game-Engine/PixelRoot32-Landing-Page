@@ -4,7 +4,7 @@
  */
 
 const GITHUB_API_URL = 'https://api.github.com/repos/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tags';
-const FALLBACK_VERSION = 'v1.13.0';
+const FALLBACK_VERSION = 'v1.14.0';
 
 let cachedVersion: string | null = null;
 
@@ -97,17 +97,40 @@ function compareVersions(verA: string, verB: string) {
 }
 
 /**
+ * Update the hard-coded install snippet with the version the API returned.
+ *
+ * The code block used to carry the release number as literal text, so it went
+ * stale on every release and the page advertised a version nothing pointed at.
+ * The hero badge already fetches the latest tag; these placeholders ride the
+ * same fetch, so there is one source of truth. The static text stays as the
+ * no-JavaScript answer and is kept current by the release checklist.
+ */
+function patchVersionPlaceholders(container: HTMLElement, version: string): void {
+  const number = version.replace(/^v/, '');
+  container.querySelectorAll<HTMLElement>('[data-version-label]').forEach(el => {
+    el.textContent = `v${number}`;
+  });
+  container.querySelectorAll<HTMLElement>('[data-version-pin]').forEach(el => {
+    el.textContent = `^${number}`;
+  });
+}
+
+/**
  * Initialize version display
  * Updates the version badge in the hero section
  */
 export async function initVersionDisplay(i18n?: { t: (key: string, defaultValue?: string) => string }, container: HTMLElement = document.body): Promise<void> {
   const versionElement = container.querySelector('#hero-version');
-  if (!versionElement) return;
+  const hasPlaceholders = container.querySelector('[data-version-label]') !== null;
+  if (!versionElement && !hasPlaceholders) return;
 
   try {
     const version = await getLatestVersion();
     const availableText = i18n?.t('hero.version.available') || 'available';
-    versionElement.textContent = `${version} ${availableText}`;
+    if (versionElement) {
+      versionElement.textContent = `${version} ${availableText}`;
+    }
+    patchVersionPlaceholders(container, version);
   } catch (error) {
     console.warn('Failed to update version display:', error);
   }
