@@ -22,12 +22,14 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 - **Built With:** `/#built-with` - Sample projects and reference games
 - **Modular Compilation:** `/#modular` - `PIXELROOT32_ENABLE_*` build flags
 - **Tools:** `/#tools` - Developer tools
+- **WASM demo:** `/#wasm-demo` - The engine compiled to WebAssembly, runnable in the page
 
 ### External Resources
 
 - **Documentation:** `https://docs.pixelroot32.org`
 - **GitHub (Engine):** `https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine`
 - **GitHub (Samples):** `https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tree/main/examples`
+- **GitHub (Demo projects):** `https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Demo-Projects`
 - **GitHub (Sprite Compiler):** `https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Sprite-Sheet-Compiler`
 - **Main Website:** `https://pixelroot32.org`
 - **Tool Suite (Tilemap Editor):** `https://pixelroot32.com`
@@ -36,6 +38,7 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 
 - **Sitemap XML:** `/sitemap.xml`
 - **Robots.txt:** `/robots.txt`
+- **Agent context (this file):** `/ai.md`
 
 ---
 
@@ -53,7 +56,7 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 
 - **Language:** C++17 (requires `-std=gnu++17`, `-fno-exceptions`)
 - **Platforms:** ESP32 variants (hardware), PC/Native (SDL2), OLED via u8g2 (SSD1306, SH1106)
-- **Build:** PlatformIO (`lib_deps = gperez88/PixelRoot32-Game-Engine@^1.8.0`)
+- **Build:** PlatformIO (`lib_deps = gperez88/PixelRoot32-Game-Engine@^1.14.0`)
 
 ---
 
@@ -66,18 +69,19 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 3. Camera effects (shake, punch, offset) with zero-allocation operation
 4. Sprite rendering (1bpp/2bpp/4bpp), multi-palette indexing, and O(1) tile animations
 5. "Flat Solver" physics with Static/Kinematic/Rigid/Sensor actors, moving platforms, custom hitboxes, and one-way platforms
-6. NES-style 8-voice dynamic audio (Pulse, Triangle, Noise, Sine, Saw)
+6. NES-style 8-voice dynamic audio (Pulse, Triangle, Noise, Sine, Saw) with a 512-sample render block on FPU targets and 1024 without one (23.2 ms and 46.4 ms at 22 050 Hz), and Legacy/Nes/Hybrid sound profiles
 7. Modular compilation with `PIXELROOT32_ENABLE_*` flags
-8. Memory optimization (~100KB static RAM on measured ESP32 128×128 full build; modular flags save ~14/9/9/2 KB RAM for Audio/Physics/UI/Particles; optional Dirty Regions pipeline via build flag, static tilemap cache)
+8. Memory optimization (~100 KB static RAM, 104,601 bytes measured on the 1.14.0 ESP32 128×128 full build; modular flags save ~17/8/<1/~1 KB RAM for Audio/Physics/UI/Particles, plus ~2 KB for Networking and <1 KB for Persistence when enabled, with Dirty Regions and static tilemap caches opt-in)
 9. Resolution-independent rendering with scaling
 10. Gameplay framework: GridSpace, StateMachine, ObjectPool, event bus with interaction triggers, RoomGraph worlds, camera tweens, spatial queries, and depth sorting (each opt-in behind its own build flag)
 11. UI sprite elements: UISprite and UISpriteRow render 1/2/4 bpp sprites as first-class UI elements (icons, hearts, lives, keys, ammo) with `setVisible()`, layout placement, and fixed positions including half/quarter steps
-12. Render performance: deferred DMA wait overlaps SPI transfer with the next frame (frame cost = max(CPU, transfer)), 1bpp direct framebuffer path (~10x faster writes), and opt-in 12-bit RGB444 wire format (-25% SPI bandwidth)
+12. Render performance: deferred DMA wait overlaps SPI transfer with the next frame (frame cost = max(CPU, transfer)), 1bpp direct framebuffer path (~10x faster writes), opt-in 12-bit RGB444 wire format (-25% SPI bandwidth), a caller-supplied 8bpp expansion table via `DrawSurface::setPalette8`, and a frame transfer that can be closed before the next one (`PIXELROOT32_DRAIN_PRESENT`)
+13. Persistence: named key-value settings and numbered save slots behind one contract (`PIXELROOT32_ENABLE_PERSISTENCE`, default off), a typed `StoreResult` on every call, a 16-byte CRC-32 record envelope carrying a schema version, and NVS / host-file / in-memory adapters
 
 ### Embedded Development
 
 1. Multi-core programming on dual-core ESP32 (Core 0: audio, Core 1: game loop when available)
-2. Fixed16 arithmetic for platforms without FPU (ESP32-C3, S2, C6)
+2. Fixed16 arithmetic for platforms without FPU (ESP32-C3, C2, S2, C6)
 3. DMA pipelining for displays
 4. IRAM-cached rendering
 5. Lock-free SPSC command queues for audio
@@ -97,9 +101,10 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 - **Scene** - a Godot-style logical unit of the game world; scenes can transition (Fade/Iris/Diagonal Wipe)
 - **RoomGraph / RoomGraph worlds** - world model built from connected rooms ("room-by-room" design)
 - **Flat Solver** - the engine's physics solver with Static/Kinematic/Rigid/Sensor actors
-- **`PIXELROOT32_ENABLE_*` flags** - compile-time feature flags for modular builds (Audio, Physics, UI, Particles, Dirty Regions, etc.)
+- **`PIXELROOT32_ENABLE_*` flags** - compile-time feature flags for modular builds (Audio, Physics, UI, Particles, Networking, Persistence, Dialog, Gameplay, Dirty Regions, etc.)
 - **Dirty Regions** - optional rendering optimization that only redraws changed screen regions
-- **Fixed16** - fixed-point arithmetic for ESP32 variants without an FPU (C3, S2, C6)
+- **Fixed16** - fixed-point arithmetic for ESP32 variants without an FPU (C3, C2, S2, C6)
+- **Persistence module** - optional storage layer behind `PIXELROOT32_ENABLE_PERSISTENCE`: named key-value settings plus numbered save slots, each record wrapped in a 16-byte CRC-32 envelope with a schema version, and a typed `StoreResult` returned by every call
 - **IRAM / PROGMEM** - memory regions: IRAM (fast, instruction/data RAM) and flash (PROGMEM storage)
 - **SPSC queue** - single-producer/single-consumer lock-free queue used for the audio command path
 - **u8g2** - library used for OLED support (SSD1306, SH1106)
@@ -112,14 +117,15 @@ PixelRoot32 is a high-performance 2D game engine written in C++17, specifically 
 
 ### Current Version
 
-- **Engine:** v1.8.0
+- **Engine:** v1.14.0
 - **Landing Page:** v1.0.0
 
 ### Landing Page
 
 - The page is a **Single Page Application (SPA)** rendered with TypeScript/Vite
 - Supports **i18n** (English and Spanish) - language is detected from browser or saved in localStorage
-- There are no additional routes beyond home with anchors (#features, #code, #showcase, #platforms, #built-with, #modular, #tools)
+- There are no additional routes beyond home with anchors (#features, #code, #showcase, #platforms, #built-with, #modular, #tools, #wasm-demo)
+- The version badge and the install snippet are filled at runtime from the repository's latest GitHub tag; the static text in the markup is the no-JavaScript fallback, so a stale version there is not what a visitor sees
 
 ### For Engine Development
 
@@ -162,7 +168,9 @@ This includes:
 - Architecture overview
 - API reference
 - Physics system documentation
-- Audio subsystem (8-voice NES-style)
+- Audio subsystem (8-voice NES-style, render block and sound profiles)
+- Persistence module (settings, save slots, record envelope)
+- Networking module (ESP-NOW, loopback transport)
 - Memory management guide
 - Platform compatibility
 - Migration guides
@@ -170,11 +178,16 @@ This includes:
 
 ### Sample Projects (featured on landing)
 
-- Bomberbot (original bomberman-style game, all CC0 art): interpolated grid movement, seeded board generation, chain-reaction explosions, PRNG enemy AI, power-ups, HUD, and audio
-- Midway Clone (vertically scrolling shooter): per-frame driven camera and ObjectPool-backed bullets, enemies, and explosions; profiles ESP32 frame budget
-- Legend of Clone (8-bit-style overworld and dungeon): two scenes over a shared room-graph, scrolling room transitions, flash-resident 4bpp tilemaps with static caching and dual palette
+Six demos from `PixelRoot32-Demo-Projects`, in the order the page shows them:
 
-Additional examples available at: `https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tree/main/examples`
+1. **Iso Dungeon** - a 2:1 isometric dungeon in an engine with no isometric mode: the view is one ProjectionSpec (six integers) and every other system is the same projection-blind code an axis-aligned game runs
+2. **Top-Down City** - an open world on a microcontroller: one 128×128-tile island across five districts, drivable traffic, a streamed crowd, interiors and a day-night cycle, in 8.8% of the ESP32's RAM
+3. **Music Sequencer** - a four-track sequencer re-timed mid-loop from six buttons; a `MusicTrack` chains up to four streams over one pattern and the APU maps melodic track N to voice N
+4. **Legend of Clone** - an 8-bit-style overworld and dungeon: two scenes over a shared room-graph, scrolling room transitions, flash-resident 4bpp tilemaps with static caching and a dual palette
+5. **Chess** - touch-driven chess with every rule implemented, castling through threefold repetition; the rules are pure functions with no engine dependency, verified on the host with perft
+6. **Space Invaders** - a fixed shooter with a marching formation, degradable bunkers and a bass line that speeds up; arena, projectile pool and explosion slots are sized at compile time
+
+The engine repository also ships 11 minimal examples, one per capability, at `https://github.com/PixelRoot32-Game-Engine/PixelRoot32-Game-Engine/tree/main/examples`. The DOOM port in the demo repository is a GPL-2 derivative and is deliberately not featured on the landing page.
 
 ---
 
