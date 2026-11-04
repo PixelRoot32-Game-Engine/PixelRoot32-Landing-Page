@@ -26,38 +26,51 @@ export function ModularCompilation(): string {
           </thead>
           <tbody class="divide-y divide-border-ui/50">
             <!--
-              Measured 2026-07-26 on esp32dev (PlatformIO size A/B), 128x128 bench
-              with subsystem refs linked. See Engine scripts/modular_size_results.json.
-              Audio RAM includes sizeof(ESP32AudioScheduler) heap (ApuCore); not task/DMA.
+              Every number comes from scripts/modular_size_results.json in the
+              engine repo (1.14.0, measured 2026-11-04): esp32dev, 128x128 bench
+              scene with each subsystem's symbols linked. Audio RAM includes the
+              sizeof(ESP32AudioScheduler) heap (ApuCore); not task/DMA.
             -->
             <tr class="hover:bg-background/50 transition-colors">
               <td class="py-4 px-4 font-mono">${i18n.t('modular.audio')}</td>
-              <td class="text-center py-4 px-4 font-mono text-secondary">~14 KB</td>
-              <td class="text-center py-4 px-4 font-mono">~10 KB</td>
+              <td class="text-center py-4 px-4 font-mono text-secondary">~17 KB</td>
+              <td class="text-center py-4 px-4 font-mono">~26 KB</td>
               <td class="py-4 px-4 font-mono text-xs text-text-muted">PIXELROOT32_ENABLE_AUDIO</td>
             </tr>
             <tr class="hover:bg-background/50 transition-colors">
               <td class="py-4 px-4 font-mono">${i18n.t('modular.physics')}</td>
-              <td class="text-center py-4 px-4 font-mono text-secondary">~9 KB</td>
-              <td class="text-center py-4 px-4 font-mono">~7 KB</td>
+              <td class="text-center py-4 px-4 font-mono text-secondary">~8 KB</td>
+              <td class="text-center py-4 px-4 font-mono">~8 KB</td>
               <td class="py-4 px-4 font-mono text-xs text-text-muted">PIXELROOT32_ENABLE_PHYSICS</td>
             </tr>
             <tr class="hover:bg-background/50 transition-colors">
               <td class="py-4 px-4 font-mono">${i18n.t('modular.ui')}</td>
-              <td class="text-center py-4 px-4 font-mono text-secondary">~9 KB</td>
-              <td class="text-center py-4 px-4 font-mono">~12 KB</td>
+              <td class="text-center py-4 px-4 font-mono text-secondary">&lt;1 KB</td>
+              <td class="text-center py-4 px-4 font-mono">~4 KB</td>
               <td class="py-4 px-4 font-mono text-xs text-text-muted">PIXELROOT32_ENABLE_UI_SYSTEM</td>
             </tr>
             <tr class="hover:bg-background/50 transition-colors">
               <td class="py-4 px-4 font-mono">${i18n.t('modular.particles')}</td>
+              <td class="text-center py-4 px-4 font-mono text-secondary">~1 KB</td>
+              <td class="text-center py-4 px-4 font-mono">~1 KB</td>
+              <td class="py-4 px-4 font-mono text-xs text-text-muted">PIXELROOT32_ENABLE_PARTICLES</td>
+            </tr>
+            <tr class="hover:bg-background/50 transition-colors">
+              <td class="py-4 px-4 font-mono">${i18n.t('modular.networking')}</td>
               <td class="text-center py-4 px-4 font-mono text-secondary">~2 KB</td>
               <td class="text-center py-4 px-4 font-mono">~5 KB</td>
-              <td class="py-4 px-4 font-mono text-xs text-text-muted">PIXELROOT32_ENABLE_PARTICLES</td>
+              <td class="py-4 px-4 font-mono text-xs text-text-muted">PIXELROOT32_ENABLE_NETWORKING</td>
+            </tr>
+            <tr class="hover:bg-background/50 transition-colors">
+              <td class="py-4 px-4 font-mono">${i18n.t('modular.persistence')}</td>
+              <td class="text-center py-4 px-4 font-mono text-secondary">&lt;1 KB</td>
+              <td class="text-center py-4 px-4 font-mono">~1 KB</td>
+              <td class="py-4 px-4 font-mono text-xs text-text-muted">PIXELROOT32_ENABLE_PERSISTENCE</td>
             </tr>
             <tr class="border-t-2 border-border-ui bg-background/30">
               <td class="py-4 px-4 font-mono font-bold text-primary">${i18n.t('modular.all')}</td>
-              <td class="text-center py-4 px-4 font-mono font-bold text-primary">~33 KB</td>
-              <td class="text-center py-4 px-4 font-mono font-bold text-primary">~35 KB</td>
+              <td class="text-center py-4 px-4 font-mono font-bold text-primary">~28 KB</td>
+              <td class="text-center py-4 px-4 font-mono font-bold text-primary">~43 KB</td>
               <td class="py-4 px-4 font-mono text-xs text-text-muted">${i18n.t('modular.all_flags')}</td>
             </tr>
           </tbody>
@@ -80,6 +93,14 @@ export function ModularCompilation(): string {
         </div>
       </div>
     </div>
+
+    <!-- Every row states what the module costs to have compiled in, measured
+         against the same build without it. The four default-on modules are
+         turned off one at a time from the full build; networking and
+         persistence default to off, so theirs is the enabled build minus the
+         full one. Both directions describe the same thing, which is why the
+         rows share one table instead of a separate block. -->
+    <p class="mt-6 text-text-muted text-xs leading-relaxed max-w-3xl">${i18n.t('modular.method')}</p>
   </div>
 </section>`;
 }

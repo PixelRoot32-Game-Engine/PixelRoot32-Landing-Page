@@ -15,6 +15,10 @@ const __dirname = dirname(__filename);
 const projectRoot = join(__dirname, '..');
 
 const EXTERNAL_LINK_REGEX = /https?:\/\/[^\s"'<>)]+/g;
+// A URL that closes a sentence, a CSS declaration or a CSP source list carries
+// that punctuation with it. Trimming it is what stops `https://fonts.gstatic.com;`
+// from being requested as if it were a page.
+const TRAILING_PUNCTUATION = /[;,.:!?]+$/;
 const IGNORE_PATTERNS = [
   /localhost/,
   /127\.0\.0\.1/,
@@ -50,7 +54,7 @@ function getAllFiles(dir, fileList = []) {
   return fileList;
 }
 
-async function checkLink(url) {
+async function checkLink(url, file) {
   if (checkedLinks.has(url)) {
     return;
   }
@@ -69,7 +73,7 @@ async function checkLink(url) {
     });
     
     if (!response.ok && response.status !== 405) {
-      brokenLinks.push({ url, status: response.status, file: 'unknown' });
+      brokenLinks.push({ url, status: response.status, file });
     }
   } catch (error) {
     // Some servers don't support HEAD, try GET
@@ -80,26 +84,45 @@ async function checkLink(url) {
       });
       
       if (!response.ok) {
-        brokenLinks.push({ url, status: response.status, file: 'unknown' });
+        brokenLinks.push({ url, status: response.status, file });
       }
     } catch (getError) {
-      brokenLinks.push({ url, status: 'ERROR', error: getError.message });
+      brokenLinks.push({ url, status: 'ERROR', error: getError.message, file });
     }
   }
 }
 
-function extractLinks(content, filePath) {
-  const matches = content.matchAll(EXTERNAL_LINK_REGEX);
+function extractTextLinks(content) {
+  return [...content.matchAll(EXTERNAL_LINK_REGEX)].map(match =>
+    match[0].replace(TRAILING_PUNCTUATION, '')
+  );
+}
+
+function extractHtmlLinks(content) {
+  // index.html carries both a CSP meta tag and font preconnects. A policy
+  // source list and a preconnect origin are not pages, so scanning them
+  // produced `https://fonts.googleapis.com;` and four sibling false positives
+  // on every run -- failures no edit to the page could ever clear.
+  const withoutPolicy = content
+    .replace(/<meta[^>]+http-equiv=["']?content-security-policy["']?[^>]*>/gi, '')
+    .replace(/<link[^>]+rel=["']?(?:preconnect|dns-prefetch|prefetch|preload|modulepreload)["']?[^>]*>/gi, '');
+
   const links = [];
-  
-  for (const match of matches) {
-    links.push({
-      url: match[0],
-      file: filePath,
-    });
+  for (const match of withoutPolicy.matchAll(/(?:href|src)\s*=\s*["']([^"']+)["']/gi)) {
+    if (/^https?:\/\//i.test(match[1])) {
+      links.push(match[1]);
+    }
   }
-  
+
   return links;
+}
+
+function extractLinks(content, filePath) {
+  const urls = extname(filePath) === '.html'
+    ? extractHtmlLinks(content)
+    : extractTextLinks(content);
+
+  return urls.map(url => ({ url, file: filePath }));
 }
 
 async function main() {
@@ -126,7 +149,7 @@ async function main() {
   const batchSize = 5;
   for (let i = 0; i < allLinks.length; i += batchSize) {
     const batch = allLinks.slice(i, i + batchSize);
-    await Promise.all(batch.map(link => checkLink(link.url)));
+    await Promise.all(batch.map(link => checkLink(link.url, link.file)));
   }
   
   if (brokenLinks.length > 0) {
